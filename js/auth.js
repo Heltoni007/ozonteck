@@ -65,7 +65,7 @@ function handleLogout(notificationMessage = 'Logout realizado com sucesso!') {
     appState.currentQuestion = 0;
     appState.answers = [];
     appState.selectedPriorities = [];
-    appState.showingPriorities = true;
+    appState.showingPriorities = false;
     
     hideAllSections();
     document.getElementById('loginSection').classList.remove('hidden');

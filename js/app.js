@@ -17,7 +17,7 @@ let appState = {
     isLoggedIn: false,
     selectedPriorities: [],
     priorityAnalysis: {},
-    showingPriorities: true,
+    showingPriorities: false,
     clientData: {}
 };
 
@@ -89,8 +89,8 @@ function showPrioritySelection() {
     const container = document.getElementById('questionsContainer');
     container.innerHTML = `
         <div class="question-card">
-            <div class="question-title">🎯 Quais são suas PRINCIPAIS PRIORIDADES de saúde?</div>
-            <div class="question-subtitle">Selecione até 3 prioridades clicando nelas (ordem de importância)</div>
+            <div class="question-title">🎯 Agora selecione suas PRINCIPAIS PRIORIDADES de saúde</div>
+            <div class="question-subtitle">Com base nas suas respostas, escolha até 3 prioridades clicando nelas (ordem de importância)</div>
             
             <div style="background: #f0fdfa; padding: 20px; border-radius: 12px; margin: 20px 0;">
                 <h4 style="color: #00b894; margin-bottom: 15px;">📋 Escolha suas prioridades:</h4>
@@ -243,8 +243,8 @@ function startQuiz() {
         appState.currentQuestion = 0;
         appState.answers = [];
         appState.selectedPriorities = [];
-        appState.showingPriorities = true;
-        showPrioritySelection();
+        appState.showingPriorities = false;
+        showQuestion();
     }
 }
 
@@ -322,49 +322,52 @@ function nextQuestion() {
 }
 
 async function finishQuiz() {
-    if (appState.showingPriorities && appState.selectedPriorities.length > 0) {
-        appState.showingPriorities = false;
-        appState.currentQuestion = 0;
-        document.getElementById('progressText').textContent = `Prioridades selecionadas! Agora responda às perguntas de saúde`;
+    if (!appState.showingPriorities && appState.answers.length === questions.length) {
+        // Questionário terminou, agora mostra as prioridades
+        appState.showingPriorities = true;
+        document.getElementById('progressText').textContent = `Questionário concluído! Agora selecione suas prioridades`;
         
         saveStateToLocalStorage();
 
         setTimeout(() => {
-            showQuestion();
+            showPrioritySelection();
         }, 1000);
         return;
     }
     
-    // Prepara os dados do diagnóstico para serem enviados
-    const diagnosticReport = {
-        consultant: appState.currentUser,
-        client: appState.clientData,
-        priorities: appState.selectedPriorities,
-        answers: appState.answers,
-        timestamp: new Date().toISOString()
-    };
+    if (appState.showingPriorities && appState.selectedPriorities.length > 0) {
+        // Prioridades selecionadas, finaliza o diagnóstico
+        // Prepara os dados do diagnóstico para serem enviados
+        const diagnosticReport = {
+            consultant: appState.currentUser,
+            client: appState.clientData,
+            priorities: appState.selectedPriorities,
+            answers: appState.answers,
+            timestamp: new Date().toISOString()
+        };
 
-    try {
-        const response = await fetch('backend/api/save_diagnostic.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(diagnosticReport)
-        });
-        const result = await response.json();
-        if (result.error) {
-            showNotification(`Erro ao salvar: ${result.message}`, 'error');
-        } else {
-            showNotification(result.message, 'success');
+        try {
+            const response = await fetch('backend/api/save_diagnostic.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(diagnosticReport)
+            });
+            const result = await response.json();
+            if (result.error) {
+                showNotification(`Erro ao salvar: ${result.message}`, 'error');
+            } else {
+                showNotification(result.message, 'success');
+            }
+        } catch (error) {
+            console.error("Falha ao salvar diagnóstico:", error);
+            showNotification('Erro de comunicação ao salvar o diagnóstico.', 'error');
         }
-    } catch (error) {
-        console.error("Falha ao salvar diagnóstico:", error);
-        showNotification('Erro de comunicação ao salvar o diagnóstico.', 'error');
-    }
 
-    generateResults();
-    hideAllSections();
-    document.getElementById('resultsSection').classList.remove('hidden');
-    localStorage.removeItem('ozonteckAppState');
+        generateResults();
+        hideAllSections();
+        document.getElementById('resultsSection').classList.remove('hidden');
+        localStorage.removeItem('ozonteckAppState');
+    }
 }
 
 function restartQuiz() {
@@ -372,7 +375,7 @@ function restartQuiz() {
     appState.currentQuestion = 0;
     appState.answers = [];
     appState.selectedPriorities = [];
-    appState.showingPriorities = true;
+    appState.showingPriorities = false;
     appState.clientData = {};
 
     // Limpa o progresso salvo no localStorage
