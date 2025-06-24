@@ -43,7 +43,16 @@ function loadStateFromLocalStorage() {
         const loadedState = JSON.parse(savedState);
         // Só carrega o estado se o usuário logado for o mesmo
         if (loadedState.currentUser && appState.currentUser.name === loadedState.currentUser.name) {
-            appState = { ...appState, ...loadedState };
+            // Garante que sempre começa com o questionário
+            appState = { 
+                ...appState, 
+                currentQuestion: loadedState.currentQuestion || 0,
+                answers: loadedState.answers || [],
+                selectedPriorities: loadedState.selectedPriorities || [],
+                showingPriorities: false, // Sempre começa com questionário
+                clientData: loadedState.clientData || {},
+                currentUser: loadedState.currentUser
+            };
             return true;
         }
     }
@@ -68,6 +77,9 @@ function handleStartDiagnosis() {
         showNotification('Por favor, insira um e-mail válido.', 'error');
         return;
     }
+
+    // Limpa o estado anterior para garantir que sempre começa com o questionário
+    localStorage.removeItem('ozonteckAppState');
 
     appState.clientData = {
         name: clientName,
@@ -238,15 +250,14 @@ function removePriority(priorityId) {
 // =================================================================
 
 function startQuiz() {
-    if (loadStateFromLocalStorage()) {
-        showNotification('Seu progresso anterior foi restaurado!', 'success');
-        if (appState.showingPriorities) {
-            showPrioritySelection();
-            updateSelectedPrioritiesDisplay();
-        } else {
-            showQuestion();
-        }
+    // Sempre começa com o questionário, exceto se já foi completamente respondido
+    if (appState.answers && appState.answers.length === questions.length) {
+        // Questionário já foi respondido, vai direto para as prioridades
+        appState.showingPriorities = true;
+        showPrioritySelection();
+        updateSelectedPrioritiesDisplay();
     } else {
+        // Sempre começa com o questionário
         appState.currentQuestion = 0;
         appState.answers = [];
         appState.selectedPriorities = [];
