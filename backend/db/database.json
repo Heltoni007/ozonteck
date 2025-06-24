@@ -1,0 +1,1446 @@
+{
+    "users": {
+        "admin": {
+            "password": "admin123",
+            "name": "Administrador",
+            "avatar": "👨‍💼",
+            "role": "admin"
+        },
+        "carlos.silva": {
+            "password": "ozonteck2024",
+            "name": "Carlos Silva",
+            "avatar": "👨‍⚕️",
+            "role": "vendedor"
+        },
+        "ana.santos": {
+            "password": "vendas123",
+            "name": "Ana Santos",
+            "avatar": "👩‍💼",
+            "role": "vendedor"
+        },
+        "pedro.oliveira": {
+            "password": "saude456",
+            "name": "Pedro Oliveira",
+            "avatar": "👨‍🔬",
+            "role": "vendedor"
+        },
+        "visitante": {
+            "password": "demo123",
+            "name": "Visitante",
+            "avatar": "👋",
+            "role": "demo"
+        },
+        "teste": {
+            "password": "teste123",
+            "name": "Teste",
+            "avatar": "👤",
+            "role": "vendedor"
+        }
+    },
+    "clientPriorities": {
+        "energia_vitalidade": {
+            "id": 1,
+            "title": "Recuperar Energia e Vitalidade",
+            "icon": "⚡",
+            "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+            "products": [
+                "LIFE CHI",
+                "VIRTUOSOS CAPS",
+                "VITA OZON PLUS"
+            ],
+            "mainProduct": "LIFE CHI",
+            "urgency": "alta",
+            "benefitsText": "Combate o cansaço, aumenta ATP celular, melhora oxigenação e disposição"
+        },
+        "dores_inflamacao": {
+            "id": 2,
+            "title": "Eliminar Dores e Inflamações Crônicas",
+            "icon": "🩹",
+            "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+            "products": [
+                "LIFE CHI",
+                "OZON FLEX",
+                "ÔMEGA 3"
+            ],
+            "mainProduct": "LIFE CHI",
+            "urgency": "alta",
+            "benefitsText": "Alívio em 3-15 minutos, reduz inflamação sistêmica, relaxa músculos"
+        },
+        "sono_regeneracao": {
+            "id": 3,
+            "title": "Melhorar Sono e Regeneração Celular",
+            "icon": "😴",
+            "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+            "products": [
+                "DREAM BLISS",
+                "POWER TRI-MAGNÉSIO",
+                "TRIMAGNÉSIO"
+            ],
+            "mainProduct": "DREAM BLISS",
+            "urgency": "média",
+            "benefitsText": "Regula melatonina, melhora qualidade do sono, acelera recuperação celular"
+        },
+        "imunidade_prevencao": {
+            "id": 4,
+            "title": "Fortalecer Imunidade e Prevenção",
+            "icon": "🛡️",
+            "description": "Blindar organismo contra infecções, prevenir mais de 230 patologias e aumentar resistência natural",
+            "products": [
+                "NX CAP",
+                "VITA OZON PLUS",
+                "ÔMEGA 3"
+            ],
+            "mainProduct": "NX CAP",
+            "urgency": "alta",
+            "benefitsText": "Previne 230+ patologias, fortalece sistema imune, combate radicais livres"
+        },
+        "circulacao_cardiovascular": {
+            "id": 5,
+            "title": "Otimizar Circulação e Saúde Cardiovascular",
+            "icon": "❤️",
+            "description": "Melhorar fluxo sanguíneo, reduzir colesterol, fortalecer coração e prevenir problemas vasculares",
+            "products": [
+                "ÔMEGA 3",
+                "AMINA K2",
+                "LIFE CHI"
+            ],
+            "mainProduct": "ÔMEGA 3",
+            "urgency": "alta",
+            "benefitsText": "Melhora perfusão cerebral, reduz LDL, protege sistema cardiovascular"
+        },
+        "beleza_antiaging": {
+            "id": 6,
+            "title": "Beleza Natural e Anti-aging",
+            "icon": "✨",
+            "description": "Pele radiante, cabelos fortes, unhas saudáveis e combate ao envelhecimento precoce",
+            "products": [
+                "LUMINOUS VITA",
+                "ÓLEO OZONIZADO",
+                "ÔMEGA 3"
+            ],
+            "mainProduct": "LUMINOUS VITA",
+            "urgency": "média",
+            "benefitsText": "Estimula colágeno, pele radiante, cabelos e unhas fortes"
+        },
+        "emagrecimento_metabolismo": {
+            "id": 7,
+            "title": "Emagrecimento e Aceleração do Metabolismo",
+            "icon": "🔥",
+            "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+            "products": [
+                "BORY SLIM",
+                "OZON LEV",
+                "VITA OZON PLUS"
+            ],
+            "mainProduct": "BORY SLIM",
+            "urgency": "média",
+            "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas"
+        },
+        "performance_sexual": {
+            "id": 8,
+            "title": "Performance Sexual e Libido",
+            "icon": "💪",
+            "description": "Aumentar libido, melhorar performance sexual e equilibrar hormônios naturalmente",
+            "products": [
+                "XBOOSTER",
+                "LIFE CHI",
+                "VIRTUOSOS CAPS"
+            ],
+            "mainProduct": "XBOOSTER",
+            "urgency": "média",
+            "benefitsText": "Aumenta libido, melhora performance, equilibra hormônios"
+        }
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Como está sua ENERGIA e disposição no dia a dia?",
+            "subtitle": "A energia é fundamental para o bem-estar geral",
+            "category": "energia",
+            "weight": 4,
+            "options": [
+                {
+                    "text": "⚡ Excelente, sempre com muita energia",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "😊 Boa, raramente me sinto cansado",
+                    "value": 2,
+                    "weight": 1,
+                    "products": []
+                },
+                {
+                    "text": "😐 Regular, às vezes sinto cansaço",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😴 Baixa, frequentemente me sinto cansado",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "LIFE CHI",
+                        "VITA OZON PLUS"
+                    ]
+                },
+                {
+                    "text": "😩 Muito baixa, sempre exausto",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "Como está seu SISTEMA IMUNOLÓGICO?",
+            "subtitle": "Frequência de gripes, resfriados e infecções",
+            "category": "imunidade",
+            "weight": 4,
+            "options": [
+                {
+                    "text": "🛡️ Excelente, raramente fico doente",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "😊 Bom, poucas vezes por ano",
+                    "value": 2,
+                    "weight": 1,
+                    "products": []
+                },
+                {
+                    "text": "😐 Regular, algumas gripes por ano",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "NX CAP"
+                    ]
+                },
+                {
+                    "text": "🤧 Baixo, frequentes resfriados",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ]
+                },
+                {
+                    "text": "🦠 Muito baixo, sempre pegando algo",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS",
+                        "ÔMEGA 3"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Como está sua DIGESTÃO?",
+            "subtitle": "Problemas digestivos, gases, azia ou desconforto",
+            "category": "digestao",
+            "weight": 3,
+            "options": [
+                {
+                    "text": "✨ Perfeita, sem problemas",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "😊 Boa, raramente tenho problemas",
+                    "value": 2,
+                    "weight": 1,
+                    "products": []
+                },
+                {
+                    "text": "😐 Regular, alguns desconfortos",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "OZON LEV"
+                    ]
+                },
+                {
+                    "text": "😣 Ruim, frequentes problemas",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP"
+                    ]
+                },
+                {
+                    "text": "😵 Muito ruim, sempre com problemas",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Como está seu SONO?",
+            "subtitle": "Qualidade do sono e facilidade para adormecer",
+            "category": "sono",
+            "weight": 3,
+            "options": [
+                {
+                    "text": "😴 Excelente, durmo muito bem",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "😊 Bom, poucas vezes tenho problemas",
+                    "value": 2,
+                    "weight": 1,
+                    "products": []
+                },
+                {
+                    "text": "😐 Regular, às vezes tenho insônia",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "TRIMAGNÉSIO"
+                    ]
+                },
+                {
+                    "text": "😟 Ruim, frequentemente mal",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                },
+                {
+                    "text": "😵 Péssimo, sempre com insônia",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "TRIMAGNÉSIO"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "Tem problemas de TENSÃO MUSCULAR?",
+            "subtitle": "Avalie tensões, rigidez ou desconfortos musculares",
+            "category": "muscular",
+            "weight": 3,
+            "options": [
+                {
+                    "text": "😌 Não, músculos sempre relaxados",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "😊 Raramente tenho tensão muscular",
+                    "value": 2,
+                    "weight": 1,
+                    "products": []
+                },
+                {
+                    "text": "😐 Às vezes sinto rigidez, especialmente pela manhã",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                },
+                {
+                    "text": "😣 Frequentemente tenho tensão no pescoço\/ombros",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX"
+                    ]
+                },
+                {
+                    "text": "😰 Sempre com dores e tensões musculares",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": "Como você avalia sua MEMÓRIA e FOCO?",
+            "subtitle": "Capacidade de concentração e clareza mental",
+            "category": "mental",
+            "weight": 3,
+            "options": [
+                {
+                    "text": "🧠 Excelente, sempre focado e com boa memória",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🤔 Bom, mas às vezes me distraio",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "ÔMEGA 3"
+                    ]
+                },
+                {
+                    "text": "😕 Regular, tenho alguma dificuldade de concentração",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS"
+                    ]
+                },
+                {
+                    "text": "😟 Ruim, esqueço as coisas com frequência",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ]
+                },
+                {
+                    "text": "🤯 Péssimo, muita dificuldade de foco e memória",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS",
+                        "NANO BLEND"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": "Como está sua SAÚDE INTESTINAL?",
+            "subtitle": "Funcionamento do intestino, inchaço e gases",
+            "category": "intestinal",
+            "weight": 4,
+            "options": [
+                {
+                    "text": "😃 Ótima, intestino regular e sem desconfortos",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🙂 Boa, funciona bem na maior parte do tempo",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "OZON LEV"
+                    ]
+                },
+                {
+                    "text": "😐 Regular, às vezes sinto inchaço ou irregularidade",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP"
+                    ]
+                },
+                {
+                    "text": "😒 Ruim, frequentemente com constipação ou diarreia",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM"
+                    ]
+                },
+                {
+                    "text": "😫 Péssima, sempre com problemas intestinais graves",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": "Você sente ANSIEDADE ou ESTRESSE com frequência?",
+            "subtitle": "Avalie seu estado emocional e mental no dia a dia",
+            "category": "emocional",
+            "weight": 3,
+            "options": [
+                {
+                    "text": "😌 Tranquilo, raramente sinto ansiedade ou estresse",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🙂 Calmo, lido bem com o estresse",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "DREAM BLISS"
+                    ]
+                },
+                {
+                    "text": "😐 Moderado, sinto ansiedade em algumas situações",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                },
+                {
+                    "text": "😟 Ansioso, o estresse afeta meu dia a dia",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😰 Muito ansioso, sinto os efeitos do estresse no corpo",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": "Como está a saúde da sua PELE, CABELO e UNHAS?",
+            "subtitle": "Aspecto, hidratação, queda de cabelo e unhas fracas",
+            "category": "beleza",
+            "weight": 2,
+            "options": [
+                {
+                    "text": "💅 Excelente, pele radiante, cabelos e unhas fortes",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🙂 Bom, aspecto saudável na maior parte do tempo",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "ÓLEO OZONIZADO"
+                    ]
+                },
+                {
+                    "text": "😐 Regular, pele seca, queda de cabelo ou unhas fracas",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO"
+                    ]
+                },
+                {
+                    "text": "😟 Ruim, problemas de pele, queda acentuada ou unhas quebradiças",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3"
+                    ]
+                },
+                {
+                    "text": "😫 Péssimo, problemas crônicos de pele, cabelo e unhas",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3",
+                        "VITA OZON PLUS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": "Você tem DORES DE CABEÇA frequentes?",
+            "subtitle": "Intensidade e frequência de enxaquecas ou dores de cabeça",
+            "category": "dores",
+            "weight": 2,
+            "options": [
+                {
+                    "text": "😌 Não, raramente tenho dor de cabeça",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🙂 Leve, algumas dores de cabeça leves por mês",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                },
+                {
+                    "text": "😐 Moderada, dores de cabeça semanais que incomodam",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😣 Forte, dores de cabeça intensas e frequentes",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3"
+                    ]
+                },
+                {
+                    "text": "😫 Incapacitante, enxaquecas que afetam minhas atividades",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3",
+                        "DREAM BLISS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": "Como está sua LIBIDO e SAÚDE SEXUAL?",
+            "subtitle": "Desejo sexual, desempenho e satisfação",
+            "category": "sexual",
+            "weight": 2,
+            "options": [
+                {
+                    "text": "🔥 Excelente, vida sexual muito ativa e satisfatória",
+                    "value": 1,
+                    "weight": 0,
+                    "products": []
+                },
+                {
+                    "text": "🙂 Boa, desejo e desempenho adequados",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😐 Regular, sinto uma diminuição no desejo ou desempenho",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😟 Baixa, pouco desejo e satisfação",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ]
+                },
+                {
+                    "text": "😫 Inexistente, sem desejo ou com dificuldades significativas",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": "Você pratica ATIVIDADE FÍSICA regularmente?",
+            "subtitle": "Frequência e intensidade dos exercícios",
+            "category": "exercicio",
+            "weight": 1,
+            "options": [
+                {
+                    "text": "🏃‍♂️ Sim, de 3 a 5 vezes por semana com intensidade",
+                    "value": 1,
+                    "weight": 0,
+                    "products": [
+                        "VIRTUOSOS CAPS",
+                        "OZON FLEX"
+                    ]
+                },
+                {
+                    "text": "🚶‍♀️ Sim, de 1 a 2 vezes por semana, de forma leve",
+                    "value": 2,
+                    "weight": 1,
+                    "products": [
+                        "LIFE CHI"
+                    ]
+                },
+                {
+                    "text": "😐 Raramente, não tenho uma rotina de exercícios",
+                    "value": 3,
+                    "weight": 2,
+                    "products": [
+                        "VITA OZON PLUS"
+                    ]
+                },
+                {
+                    "text": "🛋️ Não, sou sedentário(a)",
+                    "value": 4,
+                    "weight": 3,
+                    "products": [
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ]
+                },
+                {
+                    "text": "🚫 Não posso, por alguma limitação física",
+                    "value": 5,
+                    "weight": 4,
+                    "products": [
+                        "OZON FLEX",
+                        "LIFE CHI",
+                        "POWER TRI-MAGNÉSIO"
+                    ]
+                }
+            ]
+        }
+    ],
+    "productDatabase": {
+        "LIFE CHI": {
+            "name": "LIFE CHI",
+            "code": "LC001",
+            "category": "Energia e Vitalidade",
+            "price": 199.9,
+            "description": "Suplemento energético com tecnologia de ozônio encapsulado, ideal para aumentar a vitalidade e disposição.",
+            "benefits": [
+                "Poderoso anti-inflamatório natural",
+                "Melhora a saúde cardiovascular",
+                "Fortalece a memória e concentração",
+                "Beneficia a saúde da pele",
+                "Reduz o colesterol ruim"
+            ],
+            "indications": [
+                "fadiga",
+                "baixa energia",
+                "inflamação",
+                "dores"
+            ],
+            "contraindications": [
+                "gravidez",
+                "lactação"
+            ],
+            "dosage": "2 cápsulas ao dia",
+            "stock": 150,
+            "active": true
+        },
+        "TRIMAGNÉSIO": {
+            "name": "TRIMAGNÉSIO",
+            "code": "TM001",
+            "category": "Relaxamento e Sono",
+            "price": 159.9,
+            "description": "Complexo de magnésio ozonizado para relaxamento muscular e melhora do sono.",
+            "benefits": [
+                "Relaxa músculos e tensões",
+                "Melhora a qualidade do sono",
+                "Reduz ansiedade e estresse",
+                "Fortalece ossos e dentes",
+                "Regula o sistema nervoso"
+            ],
+            "indications": [
+                "insônia",
+                "tensão muscular",
+                "ansiedade",
+                "estresse"
+            ],
+            "contraindications": [
+                "insuficiência renal"
+            ],
+            "dosage": "1-2 cápsulas antes de dormir",
+            "stock": 120,
+            "active": true
+        },
+        "ÓLEO OZONIZADO": {
+            "name": "ÓLEO OZONIZADO",
+            "code": "OO001",
+            "category": "Cuidados com a Pele",
+            "price": 89.9,
+            "description": "Óleo com ozônio estabilizado para uso tópico, ideal para problemas de pele e cicatrização.",
+            "benefits": [
+                "Acelera a cicatrização",
+                "Combate infecções da pele",
+                "Hidrata e regenera a pele",
+                "Alivia irritações e inflamações",
+                "Previne infecções"
+            ],
+            "indications": [
+                "feridas",
+                "acne",
+                "dermatite",
+                "pele seca"
+            ],
+            "contraindications": [
+                "alergia a componentes"
+            ],
+            "dosage": "Aplicar 2-3 vezes ao dia na área afetada",
+            "stock": 200,
+            "active": true
+        },
+        "DREAM BLISS": {
+            "name": "DREAM BLISS",
+            "code": "DB001",
+            "category": "Sono e Regeneração",
+            "price": 179.9,
+            "description": "Fórmula avançada com Melatonina + Coenzima Q10 ozonizada para sono reparador.",
+            "benefits": [
+                "Melhora qualidade do sono",
+                "Regeneração celular noturna",
+                "Potente antioxidante",
+                "Regulação do ritmo circadiano",
+                "Anti-aging",
+                "Reduz insônia"
+            ],
+            "indications": [
+                "insônia crônica",
+                "jet lag",
+                "envelhecimento",
+                "stress oxidativo"
+            ],
+            "contraindications": [
+                "gravidez",
+                "uso de antidepressivos"
+            ],
+            "dosage": "1 cápsula 30min antes de dormir",
+            "stock": 90,
+            "active": true
+        },
+        "NX CAP": {
+            "name": "NX CAP OZON",
+            "code": "NXC001",
+            "category": "Imunidade",
+            "price": 169.9,
+            "description": "Suplemento de suporte imunológico e prevenção.",
+            "benefits": [
+                "Fortalece o sistema imunológico",
+                "Previne infecções",
+                "Ação antioxidante",
+                "Combate radicais livres",
+                "Melhora resistência natural"
+            ],
+            "indications": [
+                "baixa imunidade",
+                "gripes frequentes",
+                "infecções recorrentes"
+            ],
+            "contraindications": [
+                "doenças autoimunes ativas"
+            ],
+            "dosage": "1-2 cápsulas ao dia",
+            "stock": 110,
+            "active": true
+        },
+        "ÔMEGA 3": {
+            "name": "ÔMEGA 3",
+            "code": "OM001",
+            "category": "Saúde Cardiovascular",
+            "price": 139.9,
+            "description": "Ômega 3 de alta qualidade para saúde cerebral e cardiovascular.",
+            "benefits": [
+                "Melhora a função cerebral",
+                "Reduz a inflamação",
+                "Promove a saúde do coração",
+                "Melhora a memória",
+                "Reduz triglicerídeos"
+            ],
+            "indications": [
+                "problemas cardiovasculares",
+                "colesterol alto",
+                "memória"
+            ],
+            "contraindications": [
+                "alergia a peixes"
+            ],
+            "dosage": "1-2 cápsulas com refeições",
+            "stock": 180,
+            "active": true
+        },
+        "VITA OZON PLUS": {
+            "name": "VITA OZON PLUS",
+            "code": "VOP001",
+            "category": "Multivitamínico",
+            "price": 189.9,
+            "description": "Complexo vitamínico ozonizado de alta absorção.",
+            "benefits": [
+                "Fornece vitaminas essenciais",
+                "Melhora a absorção de nutrientes",
+                "Fortalece o sistema imunológico",
+                "Aumenta a energia e vitalidade",
+                "Combate deficiências nutricionais"
+            ],
+            "indications": [
+                "deficiências vitamínicas",
+                "fadiga",
+                "baixa imunidade"
+            ],
+            "contraindications": [
+                "hipervitaminose"
+            ],
+            "dosage": "1 cápsula ao dia com refeição",
+            "stock": 100,
+            "active": true
+        },
+        "VIRTUOSOS CAPS": {
+            "name": "VIRTUOSOS CAPS",
+            "code": "VC001",
+            "category": "Performance e Vitalidade",
+            "price": 199.9,
+            "description": "Fórmula exclusiva para performance física e mental.",
+            "benefits": [
+                "Aumenta performance física",
+                "Melhora foco e concentração",
+                "Reduz fadiga mental",
+                "Acelera recuperação muscular",
+                "Otimiza função cerebral"
+            ],
+            "indications": [
+                "baixa performance",
+                "fadiga mental",
+                "atletas"
+            ],
+            "contraindications": [
+                "hipertensão severa"
+            ],
+            "dosage": "2 cápsulas antes do treino\/trabalho",
+            "stock": 80,
+            "active": true
+        },
+        "POWER TRI-MAGNÉSIO": {
+            "name": "POWER TRI-MAGNÉSIO",
+            "code": "PTM001",
+            "category": "Mineralização",
+            "price": 169.9,
+            "description": "Tripla ação de magnésio para máxima absorção.",
+            "benefits": [
+                "Tripla forma de magnésio",
+                "Máxima biodisponibilidade",
+                "Suporte cardiovascular avançado",
+                "Relaxamento muscular profundo",
+                "Melhora o sono naturalmente"
+            ],
+            "indications": [
+                "deficiência de magnésio",
+                "cãibras",
+                "insônia"
+            ],
+            "contraindications": [
+                "insuficiência renal grave"
+            ],
+            "dosage": "1-2 cápsulas ao dia",
+            "stock": 95,
+            "active": true
+        },
+        "LUMINOUS VITA": {
+            "name": "LUMINOUS VITA",
+            "code": "LV001",
+            "category": "Beleza e Anti-aging",
+            "price": 219.9,
+            "description": "Complexo para pele, cabelo e unhas com tecnologia ozonizada.",
+            "benefits": [
+                "Pele radiante e hidratada",
+                "Fortalece cabelos e unhas",
+                "Ação anti-aging comprovada",
+                "Estimula produção de colágeno",
+                "Proteção antioxidante celular"
+            ],
+            "indications": [
+                "envelhecimento",
+                "pele opaca",
+                "cabelos fracos"
+            ],
+            "contraindications": [
+                "gravidez durante primeiro trimestre"
+            ],
+            "dosage": "2 cápsulas ao dia com refeição",
+            "stock": 70,
+            "active": true
+        },
+        "BORY SLIM": {
+            "name": "BORY SLIM",
+            "code": "BS001",
+            "category": "Emagrecimento",
+            "price": 189.9,
+            "description": "Acelerador natural do metabolismo com ozônio.",
+            "benefits": [
+                "Acelera o metabolismo",
+                "Queima gordura localizada",
+                "Reduz retenção de líquidos",
+                "Controla apetite naturalmente",
+                "Melhora a digestão"
+            ],
+            "indications": [
+                "sobrepeso",
+                "metabolismo lento",
+                "retenção líquida"
+            ],
+            "contraindications": [
+                "gravidez",
+                "problemas cardíacos graves"
+            ],
+            "dosage": "1 cápsula 30min antes das principais refeições",
+            "stock": 120,
+            "active": true
+        },
+        "XBOOSTER": {
+            "name": "XBOOSTER",
+            "code": "XB001",
+            "category": "Performance Sexual",
+            "price": 229.9,
+            "description": "Potencializador natural da libido e performance.",
+            "benefits": [
+                "Aumenta libido naturalmente",
+                "Melhora performance sexual",
+                "Estimula circulação sanguínea",
+                "Reduz ansiedade de performance",
+                "Equilibra hormônios naturalmente"
+            ],
+            "indications": [
+                "baixa libido",
+                "disfunção erétil leve",
+                "fadiga sexual"
+            ],
+            "contraindications": [
+                "uso de vasodilatadores",
+                "problemas cardíacos"
+            ],
+            "dosage": "1 cápsula 1h antes da relação",
+            "stock": 60,
+            "active": true
+        },
+        "AMINA K2": {
+            "name": "AMINA K2",
+            "code": "AK2001",
+            "category": "Saúde Óssea",
+            "price": 179.9,
+            "description": "Vitamina K2 + aminoácidos para saúde óssea.",
+            "benefits": [
+                "Fortalece ossos e dentes",
+                "Melhora absorção de cálcio",
+                "Previne osteoporose",
+                "Suporte cardiovascular",
+                "Regulação do metabolismo ósseo"
+            ],
+            "indications": [
+                "osteoporose",
+                "fraturas",
+                "deficiência de vitamina K"
+            ],
+            "contraindications": [
+                "uso de anticoagulantes"
+            ],
+            "dosage": "1 cápsula ao dia",
+            "stock": 85,
+            "active": true
+        },
+        "OZON FLEX": {
+            "name": "OZON FLEX",
+            "code": "OF001",
+            "category": "Mobilidade Articular",
+            "price": 149.9,
+            "description": "Sachê com fórmula para articulações e mobilidade.",
+            "benefits": [
+                "Melhora mobilidade articular",
+                "Reduz dores nas articulações",
+                "Anti-inflamatório natural",
+                "Fortalece cartilagens",
+                "Melhora flexibilidade"
+            ],
+            "indications": [
+                "artrite",
+                "artrose",
+                "dores articulares",
+                "rigidez"
+            ],
+            "contraindications": [
+                "alergia a componentes"
+            ],
+            "dosage": "1 sachê ao dia dissolvido em água",
+            "stock": 150,
+            "active": true
+        },
+        "OZON LEV": {
+            "name": "OZON LEV",
+            "code": "OL001",
+            "category": "Digestão e Detox",
+            "price": 139.9,
+            "description": "Sachê digestivo com ação detoxificante.",
+            "benefits": [
+                "Melhora a digestão",
+                "Desintoxica o organismo",
+                "Regula flora intestinal",
+                "Reduz inchaço abdominal",
+                "Acelera metabolismo"
+            ],
+            "indications": [
+                "problemas digestivos",
+                "intoxicação",
+                "inchaço"
+            ],
+            "contraindications": [
+                "obstrução intestinal"
+            ],
+            "dosage": "1 sachê ao dia em jejum",
+            "stock": 180,
+            "active": true
+        },
+        "NANO BLEND": {
+            "name": "NANO BLEND COMPLEXO VITAMÍNICO",
+            "code": "NB001",
+            "category": "Suplementação Avançada",
+            "price": 259.9,
+            "description": "Complexo vitamínico em nanotecnologia para máxima absorção.",
+            "benefits": [
+                "Absorção 300% superior",
+                "Vitaminas B3 e D concentradas",
+                "Tecnologia nanotecnológica",
+                "Máxima biodisponibilidade",
+                "Resultados mais rápidos"
+            ],
+            "indications": [
+                "deficiências severas",
+                "má absorção",
+                "atletas"
+            ],
+            "contraindications": [
+                "hipervitaminose"
+            ],
+            "dosage": "1 sachê a cada 3 dias",
+            "stock": 45,
+            "active": true
+        }
+    },
+    "productProtocols": {
+        "ENERGIA_TOTAL": {
+            "name": "Protocolo Energia Total",
+            "products": [
+                "LIFE CHI",
+                "VITA OZON PLUS",
+                "VIRTUOSOS CAPS"
+            ],
+            "description": "Para quem busca máxima energia e vitalidade",
+            "individualPrice": 589.7,
+            "comboPrice": 449.9,
+            "discount": 24
+        },
+        "SONO_PERFEITO": {
+            "name": "Protocolo Sono Reparador",
+            "products": [
+                "DREAM BLISS",
+                "POWER TRI-MAGNÉSIO",
+                "TRIMAGNÉSIO"
+            ],
+            "description": "Para sono profundo e regeneração completa",
+            "individualPrice": 509.7,
+            "comboPrice": 399.9,
+            "discount": 22
+        },
+        "IMUNIDADE_BLINDADA": {
+            "name": "Protocolo Imunidade Blindada",
+            "products": [
+                "NX CAP",
+                "VITA OZON PLUS",
+                "ÔMEGA 3"
+            ],
+            "description": "Proteção máxima contra infecções",
+            "individualPrice": 499.7,
+            "comboPrice": 389.9,
+            "discount": 22
+        },
+        "BELEZA_NATURAL": {
+            "name": "Protocolo Beleza Natural",
+            "products": [
+                "LUMINOUS VITA",
+                "ÓLEO OZONIZADO",
+                "ÔMEGA 3"
+            ],
+            "description": "Pele radiante, cabelos e unhas fortes",
+            "individualPrice": 449.7,
+            "comboPrice": 359.9,
+            "discount": 20
+        },
+        "PERFORMANCE_MAX": {
+            "name": "Protocolo Performance Máxima",
+            "products": [
+                "VIRTUOSOS CAPS",
+                "XBOOSTER",
+                "LIFE CHI"
+            ],
+            "description": "Performance física e sexual otimizada",
+            "individualPrice": 629.7,
+            "comboPrice": 499.9,
+            "discount": 21
+        }
+    },
+    "diagnostics": [
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "Camila Albuquerque Gomes",
+                "email": "heltoni.w@gmail.com",
+                "ageRange": "26-35"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "LIFE CHI",
+                    "urgency": "alta",
+                    "benefitsText": "Combate o cansaço, aumenta ATP celular, melhora oxigenação e disposição",
+                    "order": 1
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE CHI",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio em 3-15 minutos, reduz inflamação sistêmica, relaxa músculos",
+                    "order": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "TRIMAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula melatonina, melhora qualidade do sono, acelera recuperação celular",
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "LIFE CHI",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "NX CAP"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "OZON LEV"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "TRIMAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "id": "diag_685ae0cc869b12.40226496",
+            "timestamp": "2025-06-24T17:30:52+00:00"
+        }
+    ]
+}

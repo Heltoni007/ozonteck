@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Ozonteck - Diagnóstico Personalizado V5.0</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌿 OZONTECK</div>
+            <div class="subtitle">Sistema Inteligente de Diagnóstico e Recomendação V5.0</div>
+            <div class="company-info">A maior fábrica de produtos ozonizados da América Latina</div>
+        </div>
+
+        <!-- Seção de Login -->
+        <div id="loginSection" class="section-card">
+            <h2 style="text-align: center; margin-bottom: 25px; color: #1e293b; font-weight: 700;">🔐 Acesso ao Sistema</h2>
+            
+            <div class="form-group">
+                <label for="loginUser">Usuário:</label>
+                <input type="text" id="loginUser" placeholder="Digite seu usuário">
+            </div>
+            
+            <div class="form-group">
+                <label for="loginPass">Senha:</label>
+                <input type="password" id="loginPass" placeholder="Digite sua senha">
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" id="loginBtn">Entrar no Sistema</button>
+            </div>
+        </div>
+
+        <!-- Painel Administrativo -->
+        <div id="adminPanel" class="admin-panel">
+            <h2 style="margin-bottom: 25px; color: #1e293b; font-weight: 700;">⚙️ Painel Administrativo</h2>
+            
+            <div class="form-group">
+                <label for="newUser">Novo Usuário:</label>
+                <input type="text" id="newUser" placeholder="Nome do usuário">
+            </div>
+            
+            <div class="form-group">
+                <label for="newPass">Senha:</label>
+                <input type="password" id="newPass" placeholder="Senha do usuário">
+            </div>
+            
+            <button class="btn" id="addUserBtn">Adicionar Usuário</button>
+            
+            <h3 style="margin: 25px 0 15px 0; color: #1e293b;">👥 Equipe Cadastrada:</h3>
+            <div id="teamList"></div>
+        </div>
+
+        <!-- Seção Dados do Cliente -->
+        <div id="clientDataSection" class="section-card hidden">
+            <h2 style="text-align: center; margin-bottom: 25px; color: #1e293b; font-weight: 700;">📊 Dados do Cliente</h2>
+            <p class="results-subtitle" style="text-align: center; margin-bottom: 30px;">Por favor, preencha os dados abaixo para continuar.</p>
+            
+            <div class="form-group">
+                <label for="clientName">Nome Completo:</label>
+                <input type="text" id="clientName" placeholder="Digite o nome do cliente">
+            </div>
+            
+            <div class="form-group">
+                <label for="clientEmail">E-mail:</label>
+                <input type="email" id="clientEmail" placeholder="exemplo@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="clientAgeRange">Faixa Etária:</label>
+                <select id="clientAgeRange" class="select-style">
+                    <option value="">Selecione...</option>
+                    <option value="18-25">18-25 anos</option>
+                    <option value="26-35">26-35 anos</option>
+                    <option value="36-45">36-45 anos</option>
+                    <option value="46-55">46-55 anos</option>
+                    <option value="56+">56+ anos</option>
+                </select>
+            </div>
+            
+            <div style="text-align: center; margin-top: 35px;">
+                <button class="btn" id="startDiagnosisBtn">Iniciar Diagnóstico</button>
+            </div>
+        </div>
+
+        <!-- História do Ozônio -->
+        <div id="ozonioHistory" class="ozonio-history hidden">
+            <h2>🌟 A História do Ozônio</h2>
+            <p>
+                O ozônio foi descoberto em 1840 pelo químico alemão Christian Friedrich Schönbein. 
+                Desde então, tem sido utilizado como uma poderosa ferramenta terapêutica. 
+                A ozonioterapia é uma prática integrativa complementar de baixo custo, segurança comprovada e reconhecida, 
+                que utiliza 95% de oxigênio medicinal e 5% de ozônio. Esta mistura de gases, quando aplicada, 
+                tem uma função terapêutica extraordinária, tratando a causa das doenças ao invés de apenas os sintomas.
+            </p>
+        </div>
+
+        <!-- Seção do Questionário -->
+        <div id="quizSection" class="section-card hidden">
+            <div class="results-header">
+                <div class="results-title">Diagnóstico Personalizado</div>
+                <p class="results-subtitle">Responda às perguntas para receber recomendações personalizadas baseadas em sua condição atual de saúde</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">Selecione suas prioridades</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div style="text-align: center; margin-top: 35px;">
+                <button class="btn" id="nextBtn" disabled>Próxima Pergunta</button>
+                <button class="btn" id="finishBtn" style="display: none;">Ver Resultados</button>
+            </div>
+        </div>
+
+        <!-- Seção de Resultados -->
+        <div id="resultsSection" class="section-card hidden">
+            <div class="results-header">
+                <div class="results-title">Suas Recomendações Personalizadas</div>
+                <p class="results-subtitle">Com base em suas respostas, selecionamos os melhores produtos para você</p>
+            </div>
+            
+            <div id="recommendedProducts"></div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn" id="restartBtn">Nova Consulta</button>
+                <button class="btn btn-secondary" id="logoutBtn">Sair do Sistema</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
