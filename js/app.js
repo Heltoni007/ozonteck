@@ -133,9 +133,9 @@ function setupPrioritySelection() {
 }
 
 function handlePriorityClick(element) {
-    const priorityId = element.dataset.priority;
+    const priorityId = parseInt(element.dataset.priority);
     
-    if (appState.selectedPriorities.find(p => p.id == priorityId)) {
+    if (appState.selectedPriorities.find(p => p.id === priorityId)) {
         showNotification('Prioridade já selecionada!', 'error');
         return;
     }
@@ -147,9 +147,14 @@ function handlePriorityClick(element) {
     
     element.classList.add('selected');
 
-    const priority = clientPriorities[Object.keys(clientPriorities).find(key => 
-        clientPriorities[key].id == priorityId
-    )];
+    // Busca direta pela prioridade usando o ID
+    let priority = null;
+    for (const key in clientPriorities) {
+        if (clientPriorities[key].id === priorityId) {
+            priority = clientPriorities[key];
+            break;
+        }
+    }
     
     if (priority) {
         appState.selectedPriorities.push({
@@ -173,7 +178,7 @@ function updateSelectedPrioritiesDisplay() {
         return;
     }
     
-    container.innerHTML = appState.selectedPriorities.map((priority, index) => `
+    const htmlContent = appState.selectedPriorities.map((priority, index) => `
         <div class="selected-priority-item" data-priority-id="${priority.id}">
             <div class="priority-order">${index + 1}º</div>
             <span class="priority-icon">${priority.icon}</span>
@@ -184,6 +189,8 @@ function updateSelectedPrioritiesDisplay() {
             <button class="remove-priority" onclick="removePriority(${priority.id})">✕</button>
         </div>
     `).join('');
+    
+    container.innerHTML = htmlContent;
     
     makePrioritiesSortable();
 }
@@ -792,6 +799,12 @@ function validateDataIntegrity() {
     console.log(`❓ Perguntas carregadas: ${questions.length}`);
     console.log(`🎯 Prioridades carregadas: ${Object.keys(clientPriorities).length}`);
     console.log(`💊 Protocolos carregados: ${Object.keys(productProtocols).length}`);
+    
+    // Debug detalhado das prioridades
+    console.log('🎯 Detalhes das prioridades:');
+    Object.entries(clientPriorities).forEach(([key, priority]) => {
+        console.log(`  - ${key}: ID=${priority.id}, Título="${priority.title}"`);
+    });
     
     // Verificar se todos os produtos mencionados nas perguntas existem no database
     const missingProducts = [];
