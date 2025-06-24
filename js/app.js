@@ -113,7 +113,6 @@ function showPrioritySelection() {
                             <div class="priority-content">
                                 <div class="priority-title">${priority.title}</div>
                                 <div class="priority-description">${priority.description}</div>
-                                <div class="priority-products">Produtos: ${priority.products.join(', ')}</div>
                             </div>
                         </div>
                     `).join('')}
