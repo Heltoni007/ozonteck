@@ -417,143 +417,121 @@ function restartQuiz() {
 // FUNÇÕES DE ANÁLISE E RESULTADOS MELHORADAS
 // =================================================================
 
-function generateResults() {
-    const productRecommendations = {};
-    const categoryScores = {};
-    
-    // Análise das respostas do questionário
+// === AGRUPAMENTO DE CATEGORIAS PARA PRIORIDADES ===
+const categoryToPriorityKey = {
+    energia: 'energia_vitalidade',
+    imunidade: 'imunidade_prevencao',
+    digestao: 'emagrecimento_metabolismo',
+    sono: 'sono_regeneracao',
+    muscular: 'dores_inflamacao',
+    mental: 'energia_vitalidade',
+    intestinal: 'emagrecimento_metabolismo',
+    emocional: 'sono_regeneracao',
+    beleza: 'beleza_antiaging',
+    dores: 'dores_inflamacao',
+    sexual: 'performance_sexual',
+    exercicio: 'energia_vitalidade',
+};
+
+// === LIMIARES DE GRAVIDADE ===
+const GRAVITY_THRESHOLDS = {
+    ALTO: 16,
+    MEDIO: 10,
+    BAIXO: 4,
+};
+
+function generateDiagnosticResult() {
+    const priorityScores = {};
+    Object.keys(clientPriorities).forEach(key => priorityScores[key] = 0);
     appState.answers.forEach(answer => {
-        if (!categoryScores[answer.category]) {
-            categoryScores[answer.category] = 0;
+        const priorityKey = categoryToPriorityKey[answer.category];
+        if (priorityKey) {
+            const score = answer.questionWeight * answer.selectedWeight;
+            priorityScores[priorityKey] += score;
         }
-        categoryScores[answer.category] += answer.selectedWeight * answer.questionWeight;
-        
-        answer.products.forEach(product => {
-            if (!productRecommendations[product]) {
-                productRecommendations[product] = 0;
-            }
-            productRecommendations[product] += answer.selectedWeight * answer.questionWeight;
-        });
     });
-    
-    const priorityAnalysis = analyzePriorities();
-    const finalRecommendations = combinePriorityAndQuizResults(productRecommendations, priorityAnalysis);
-    
-    displayResults(finalRecommendations, categoryScores, priorityAnalysis);
+    const sortedPriorities = Object.entries(priorityScores)
+        .sort((a, b) => b[1] - a[1])
+        .map(([key, score]) => ({ key, score, ...clientPriorities[key] }));
+    const top3 = sortedPriorities.slice(0, 3);
+    const result = top3.map(priority => {
+        let gravity = 'Saudável';
+        let recommendation = [];
+        let recType = '';
+        if (priority.score >= GRAVITY_THRESHOLDS.ALTO) {
+            gravity = 'Crítica';
+            recommendation = (productProtocols[priority.key.toUpperCase()]?.products || priority.products);
+            recType = 'Protocolo Essencial';
+        } else if (priority.score >= GRAVITY_THRESHOLDS.MEDIO) {
+            gravity = 'Moderada';
+            recommendation = [priority.mainProduct];
+            if (priority.products.length > 1) recommendation.push(priority.products[1]);
+            recType = 'Sugestão Forte';
+        } else if (priority.score >= GRAVITY_THRESHOLDS.BAIXO) {
+            gravity = 'Ponto de Melhoria';
+            recommendation = [priority.mainProduct];
+            recType = 'Sugestão Opcional';
+        } else {
+            gravity = 'Saudável';
+            if (priority.key === 'energia_vitalidade' && productDatabase['VITA OZON PLUS']) {
+                recommendation = ['VITA OZON PLUS'];
+                recType = 'Manutenção';
+            } else {
+                recommendation = [];
+                recType = '';
+            }
+        }
+        return {
+            name: priority.title,
+            key: priority.key,
+            score: priority.score,
+            gravity,
+            recommendation,
+            recType,
+            icon: priority.icon,
+            benefitsText: priority.benefitsText
+        };
+    });
+    let summary = '';
+    const main = result[0];
+    if (main.gravity === 'Crítica') {
+        summary = `⚠️ Atenção: Sua principal prioridade de saúde é crítica (${main.name}). Recomendamos fortemente o ${main.recType} para um plano focado de recuperação.`;
+    } else if (main.gravity === 'Moderada') {
+        summary = `🔎 Sua principal prioridade de saúde (${main.name}) está em nível moderado. Sugerimos uma ação para otimizar sua saúde.`;
+    } else if (main.gravity === 'Ponto de Melhoria') {
+        summary = `💡 Sua principal prioridade (${main.name}) é um ponto de melhoria. Pequenas mudanças podem trazer grandes benefícios!`;
+    } else {
+        summary = `🎉 Parabéns! Você está saudável em sua principal prioridade (${main.name}). Continue cuidando bem da sua saúde!`;
+    }
+    return { priorities: result, summary };
 }
 
-function analyzePriorities() {
-    const analysis = {};
-    
-    appState.selectedPriorities.forEach((priority, index) => {
-        const weight = index === 0 ? 5 : index === 1 ? 3 : 2;
-        
-        priority.products.forEach(productName => {
-            if (!analysis[productName]) {
-                analysis[productName] = 0;
-            }
-            analysis[productName] += weight;
-            
-            if (productName === priority.mainProduct) {
-                analysis[productName] += 2;
-            }
-        });
-    });
-    
-    return analysis;
+function generateResults() {
+    const diagnostic = generateDiagnosticResult();
+    displayDiagnosticResults(diagnostic);
 }
 
-function combinePriorityAndQuizResults(quizResults, priorityResults) {
-    const combined = {};
-    
-    [...new Set([...Object.keys(quizResults), ...Object.keys(priorityResults)])].forEach(product => {
-        const quizScore = quizResults[product] || 0;
-        const priorityScore = (priorityResults[product] || 0) * 3;
-        combined[product] = quizScore + priorityScore;
-    });
-    
-    return Object.entries(combined)
-        .sort(([,a], [,b]) => b - a)
-        .filter(([,score]) => score > 0);
-}
-
-function displayResults(sortedProducts, categoryScores, priorityAnalysis) {
+function displayDiagnosticResults(diagnostic) {
     const container = document.getElementById('recommendedProducts');
-    container.innerHTML = ''; // Limpa resultados antigos
-
-    if (sortedProducts.length === 0) {
-        container.innerHTML = `
-            <div class="product-card">
-                <div class="product-name">🎉 Parabéns!</div>
-                <div class="product-description">
-                    Com base em suas respostas, você apresenta uma excelente condição de saúde! 
-                    Continue mantendo seus hábitos saudáveis.
-                </div>
-            </div>
-        `;
-        return;
-    }
-    
-    let resultsHTML = '';
-    
-    // Exibir prioridades selecionadas
-    if (appState.selectedPriorities.length > 0) {
-        resultsHTML += `
-            <div class="product-card" style="background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%); border-left: 6px solid #00d4aa;">
-                <div class="product-name">🎯 Suas Prioridades de Saúde</div>
-                <div class="product-description">
-                    Com base nas prioridades que você selecionou, desenvolvemos um protocolo personalizado:
-                </div>
-                <div class="product-benefits">
-                    <h4>Ordem de Prioridade Selecionada:</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        ${appState.selectedPriorities.map((priority, index) => `
-                            <li style="margin-bottom: 8px; padding-left: 0;">
-                                <strong>${index + 1}º ${priority.icon} ${priority.title}</strong><br>
-                                <span style="color: #64748b; font-size: 14px;">${priority.benefitsText}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            </div>
-        `;
-    }
-
-    // Exibir produtos recomendados individualmente
-    resultsHTML += sortedProducts.slice(0, 5).map(([productName, score]) => {
-        const product = productDatabase[productName];
-        if (!product) return '';
-        
-        return `
-            <div class="product-card">
-                <div class="product-header">
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-code">Código: ${product.code}</div>
-                    <div class="product-price">R$ ${product.price.toFixed(2)}</div>
-                </div>
-                <div class="product-category">${product.category}</div>
-                <div class="product-description">${product.description}</div>
-                <div class="product-benefits">
-                    <h4>Principais Benefícios:</h4>
-                    <ul>
-                        ${product.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
-                    </ul>
-                </div>
-                <div class="product-usage">
-                    <strong>Dosagem:</strong> ${product.dosage}
-                </div>
-                <div class="product-stock ${product.stock < 50 ? 'low-stock' : ''}">
-                    <strong>Estoque:</strong> ${product.stock} unidades
-                    ${product.stock < 50 ? '<span class="stock-warning"> (Estoque baixo!)</span>' : ''}
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    container.innerHTML = resultsHTML;
-
-    // Gerar ofertas inteligentes baseadas nos produtos recomendados
-    generateSmartOffers(sortedProducts);
+    container.innerHTML = '';
+    let html = '';
+    html += `<div class="product-card" style="background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%); border-left: 6px solid #00d4aa;">
+        <div class="product-name">🎯 Diagnóstico Personalizado</div>
+        <div class="product-description">${diagnostic.summary}</div>
+        <div class="product-benefits">
+            <h4>Top 3 Prioridades:</h4>
+            <ul style="list-style: none; padding: 0;">
+                ${diagnostic.priorities.map((p, i) => `
+                    <li style="margin-bottom: 12px;">
+                        <strong>${i+1}º ${p.icon} ${p.name}</strong> <span style="color:#64748b; font-size:13px;">(${p.gravity}, Pontuação: ${p.score})</span><br>
+                        <span style="color:#64748b; font-size:14px;">${p.benefitsText}</span><br>
+                        ${p.recommendation.length > 0 ? `<b>Recomendação:</b> <span style="color:#00b894;">${p.recType}</span> - ${p.recommendation.map(prod => productDatabase[prod]?.name || prod).join(', ')}` : '<i>Nenhum produto recomendado</i>'}
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    </div>`;
+    container.innerHTML = html;
 }
 
 // =================================================================

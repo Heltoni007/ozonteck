@@ -44,13 +44,13 @@
             "icon": "⚡",
             "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
             "products": [
-                "LIFE CHI",
+                "OZON POWER",
                 "VIRTUOSOS CAPS",
                 "VITA OZON PLUS"
             ],
-            "mainProduct": "LIFE CHI",
+            "mainProduct": "OZON POWER",
             "urgency": "alta",
-            "benefitsText": "Combate o cansaço, aumenta ATP celular, melhora oxigenação e disposição"
+            "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo"
         },
         "dores_inflamacao": {
             "id": 2,
@@ -58,13 +58,13 @@
             "icon": "🩹",
             "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
             "products": [
-                "LIFE CHI",
+                "LIFE SHII GEL MASSAGEADOR OZONIZADO",
                 "OZON FLEX",
                 "ÔMEGA 3"
             ],
-            "mainProduct": "LIFE CHI",
+            "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
             "urgency": "alta",
-            "benefitsText": "Alívio em 3-15 minutos, reduz inflamação sistêmica, relaxa músculos"
+            "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade"
         },
         "sono_regeneracao": {
             "id": 3,
@@ -73,26 +73,25 @@
             "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
             "products": [
                 "DREAM BLISS",
-                "POWER TRI-MAGNÉSIO",
-                "TRIMAGNÉSIO"
+                "POWER TRI-MAGNÉSIO"
             ],
             "mainProduct": "DREAM BLISS",
             "urgency": "média",
-            "benefitsText": "Regula melatonina, melhora qualidade do sono, acelera recuperação celular"
+            "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente"
         },
         "imunidade_prevencao": {
             "id": 4,
             "title": "Fortalecer Imunidade e Prevenção",
             "icon": "🛡️",
-            "description": "Blindar organismo contra infecções, prevenir mais de 230 patologias e aumentar resistência natural",
+            "description": "Blindar organismo contra infecções, prevenir patologias e aumentar resistência natural",
             "products": [
                 "NX CAP",
-                "VITA OZON PLUS",
-                "ÔMEGA 3"
+                "OZON MUNITY",
+                "VITA OZON PLUS"
             ],
             "mainProduct": "NX CAP",
             "urgency": "alta",
-            "benefitsText": "Previne 230+ patologias, fortalece sistema imune, combate radicais livres"
+            "benefitsText": "Fortalece o sistema imune, combate radicais livres e aumenta a defesa do organismo"
         },
         "circulacao_cardiovascular": {
             "id": 5,
@@ -102,11 +101,11 @@
             "products": [
                 "ÔMEGA 3",
                 "AMINA K2",
-                "LIFE CHI"
+                "OZON POWER"
             ],
             "mainProduct": "ÔMEGA 3",
             "urgency": "alta",
-            "benefitsText": "Melhora perfusão cerebral, reduz LDL, protege sistema cardiovascular"
+            "benefitsText": "Melhora fluxo sanguíneo, reduz LDL, protege o sistema cardiovascular e regula a pressão"
         },
         "beleza_antiaging": {
             "id": 6,
@@ -115,12 +114,12 @@
             "description": "Pele radiante, cabelos fortes, unhas saudáveis e combate ao envelhecimento precoce",
             "products": [
                 "LUMINOUS VITA",
-                "ÓLEO OZONIZADO",
-                "ÔMEGA 3"
+                "LUMINOZ SERUM FACIAL",
+                "ÓLEO OZONIZADO"
             ],
             "mainProduct": "LUMINOUS VITA",
             "urgency": "média",
-            "benefitsText": "Estimula colágeno, pele radiante, cabelos e unhas fortes"
+            "benefitsText": "Estimula colágeno, pele radiante, cabelos e unhas fortes, combate o envelhecimento"
         },
         "emagrecimento_metabolismo": {
             "id": 7,
@@ -130,11 +129,11 @@
             "products": [
                 "BORY SLIM",
                 "OZON LEV",
-                "VITA OZON PLUS"
+                "MIND CHAI GEL REDUTOR OZONIZADO"
             ],
             "mainProduct": "BORY SLIM",
             "urgency": "média",
-            "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas"
+            "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática"
         },
         "performance_sexual": {
             "id": 8,
@@ -143,12 +142,12 @@
             "description": "Aumentar libido, melhorar performance sexual e equilibrar hormônios naturalmente",
             "products": [
                 "XBOOSTER",
-                "LIFE CHI",
+                "OZON POWER",
                 "VIRTUOSOS CAPS"
             ],
             "mainProduct": "XBOOSTER",
             "urgency": "média",
-            "benefitsText": "Aumenta libido, melhora performance, equilibra hormônios"
+            "benefitsText": "Aumenta libido, melhora performance, equilibra hormônios e aumenta a energia"
         }
     },
     "questions": [
@@ -1272,13 +1271,13 @@
                     "icon": "🩹",
                     "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
                     "products": [
-                        "LIFE CHI",
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
                         "OZON FLEX",
                         "ÔMEGA 3"
                     ],
-                    "mainProduct": "LIFE CHI",
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
                     "urgency": "alta",
-                    "benefitsText": "Alívio em 3-15 minutos, reduz inflamação sistêmica, relaxa músculos",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
                     "order": 2
                 },
                 {
@@ -1288,12 +1287,11 @@
                     "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
                     "products": [
                         "DREAM BLISS",
-                        "POWER TRI-MAGNÉSIO",
-                        "TRIMAGNÉSIO"
+                        "POWER TRI-MAGNÉSIO"
                     ],
                     "mainProduct": "DREAM BLISS",
                     "urgency": "média",
-                    "benefitsText": "Regula melatonina, melhora qualidade do sono, acelera recuperação celular",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
                     "order": 3
                 }
             ],
