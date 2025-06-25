@@ -102,13 +102,12 @@ function showPrioritySelection() {
     container.innerHTML = `
         <div class="question-card">
             <div class="question-title">🎯 Agora selecione suas PRINCIPAIS PRIORIDADES de saúde</div>
-            <div class="question-subtitle">Com base nas suas respostas, escolha até 3 prioridades clicando nelas (ordem de importância)</div>
-            
+            <div class="question-subtitle">Com base nas suas respostas, sugerimos as prioridades abaixo em ordem de importância. Você pode ajustar se desejar.</div>
             <div style="background: #f0fdfa; padding: 20px; border-radius: 12px; margin: 20px 0;">
                 <h4 style="color: #00b894; margin-bottom: 15px;">📋 Escolha suas prioridades:</h4>
                 <div id="priorityOptions" class="priority-options">
                     ${Object.values(clientPriorities).map(priority => `
-                        <div class="priority-option" data-priority="${priority.id}">
+                        <div class="priority-option${appState.selectedPriorities.find(p => p.id === priority.id) ? ' selected' : ''}" data-priority="${priority.id}">
                             <span class="priority-icon">${priority.icon}</span>
                             <div class="priority-content">
                                 <div class="priority-title">${priority.title}</div>
@@ -118,21 +117,19 @@ function showPrioritySelection() {
                     `).join('')}
                 </div>
             </div>
-            
             <div style="background: #fff7ed; padding: 20px; border-radius: 12px; margin: 20px 0;">
-                <h4 style="color: #f59e0b; margin-bottom: 15px;">🏆 Suas Prioridades Selecionadas:</h4>
+                <h4 style="color: #f59e0b; margin-bottom: 15px;">🏆 Suas Prioridades Sugeridas:</h4>
                 <div id="selectedPriorities" class="selected-priorities">
                     <div class="empty-priority">Clique até 3 prioridades acima</div>
                 </div>
             </div>
         </div>
     `;
-    
     setupPrioritySelection();
-    
     document.getElementById('nextBtn').style.display = 'none';
     document.getElementById('finishBtn').style.display = 'inline-block';
-    document.getElementById('finishBtn').disabled = true;
+    document.getElementById('finishBtn').disabled = appState.selectedPriorities.length === 0;
+    updateSelectedPrioritiesDisplay();
 }
 
 function setupPrioritySelection() {
@@ -249,14 +246,13 @@ function removePriority(priorityId) {
 // =================================================================
 
 function startQuiz() {
-    // Sempre começa com o questionário, exceto se já foi completamente respondido
     if (appState.answers && appState.answers.length === questions.length) {
-        // Questionário já foi respondido, vai direto para as prioridades
+        // Questionário já foi respondido, sugere prioridades automaticamente
+        sugerirPrioridadesAutomaticamente();
         appState.showingPriorities = true;
         showPrioritySelection();
         updateSelectedPrioritiesDisplay();
     } else {
-        // Sempre começa com o questionário
         appState.currentQuestion = 0;
         appState.answers = [];
         appState.selectedPriorities = [];
@@ -340,21 +336,19 @@ function nextQuestion() {
 
 async function finishQuiz() {
     if (!appState.showingPriorities && appState.answers.length === questions.length) {
-        // Questionário terminou, agora mostra as prioridades
+        // Questionário terminou, sugere prioridades automaticamente
+        sugerirPrioridadesAutomaticamente();
         appState.showingPriorities = true;
         document.getElementById('progressText').textContent = `Questionário concluído! Agora selecione suas prioridades`;
-        
         saveStateToLocalStorage();
-
         setTimeout(() => {
             showPrioritySelection();
+            updateSelectedPrioritiesDisplay();
         }, 1000);
         return;
     }
-    
     if (appState.showingPriorities && appState.selectedPriorities.length > 0) {
         // Prioridades selecionadas, finaliza o diagnóstico
-        // Prepara os dados do diagnóstico para serem enviados
         const diagnosticReport = {
             consultant: appState.currentUser,
             client: appState.clientData,
@@ -362,7 +356,6 @@ async function finishQuiz() {
             answers: appState.answers,
             timestamp: new Date().toISOString()
         };
-
         try {
             const response = await fetch('backend/api/save_diagnostic.php', {
                 method: 'POST',
@@ -379,7 +372,6 @@ async function finishQuiz() {
             console.error("Falha ao salvar diagnóstico:", error);
             showNotification('Erro de comunicação ao salvar o diagnóstico.', 'error');
         }
-
         generateResults();
         hideAllSections();
         document.getElementById('resultsSection').classList.remove('hidden');
@@ -759,6 +751,28 @@ function generateAgeBasedOffer(ageRange, topProducts) {
             </div>
         </div>
     `;
+}
+
+function sugerirPrioridadesAutomaticamente() {
+    // Calcula pontuação de cada prioridade
+    const priorityScores = {};
+    Object.keys(clientPriorities).forEach(key => priorityScores[key] = 0);
+    appState.answers.forEach(answer => {
+        const priorityKey = categoryToPriorityKey[answer.category];
+        if (priorityKey) {
+            const score = answer.questionWeight * answer.selectedWeight;
+            priorityScores[priorityKey] += score;
+        }
+    });
+    // Ordena prioridades por pontuação
+    const sorted = Object.entries(priorityScores)
+        .sort((a, b) => b[1] - a[1])
+        .map(([key, score]) => ({ ...clientPriorities[key], key, score }));
+    // Seleciona as 3 principais
+    appState.selectedPriorities = sorted.slice(0, 3).map((priority, idx) => ({
+        ...priority,
+        order: idx + 1
+    }));
 }
 
 // =================================================================
