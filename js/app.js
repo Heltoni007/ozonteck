@@ -99,21 +99,20 @@ function handleStartDiagnosis() {
 
 function showPrioritySelection() {
     const container = document.getElementById('questionsContainer');
-    // Prioridades sugeridas primeiro, depois as demais
+    // Ordenar: sugeridas (em ordem), depois as demais
     const suggested = appState.selectedPriorities.map(p => clientPriorities[p.key]);
     const remaining = Object.values(clientPriorities).filter(
         p => !appState.selectedPriorities.find(sp => sp.id === p.id)
     );
     const allPriorities = [...suggested, ...remaining];
-    // Cores para destaque visual das 3 principais (vermelho)
+    // Cores para as 3 principais (vermelho), neutro para as demais
     const highlightColors = [
         'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;',
         'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;',
         'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;'
     ];
-    // Cor neutra para as demais
     const neutralColor = 'background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%); border: 2px solid #d1d5db; color: #6b7280;';
-    // Legenda visual
+    // Legenda
     const legendHTML = `
         <div style='margin-bottom:12px;'>
             <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${highlightColors[0]}margin-right:6px;'></span> <b>Prioridade Crítica</b>
@@ -129,19 +128,14 @@ function showPrioritySelection() {
                 <h4 style="color: #b91c1c; margin-bottom: 15px;">🔥 Prioridades do seu diagnóstico:</h4>
                 <div id="priorityOptions" class="priority-options" style="display: flex; flex-direction: column; gap: 18px;">
                     ${allPriorities.map((priority, idx) => {
-                        const isSuggested = appState.selectedPriorities.findIndex(p => p.id === priority.id);
-                        let style = '';
-                        if (isSuggested !== -1 && isSuggested < 3) {
-                            style = highlightColors[isSuggested];
-                        } else {
-                            style = neutralColor;
-                        }
+                        const isSuggested = idx < 3;
+                        const style = isSuggested ? highlightColors[idx] : neutralColor;
                         return `
-                        <div class="priority-option${isSuggested !== -1 ? ' selected' : ''}" data-priority="${priority.id}" style="${style}">
+                        <div class="priority-option${isSuggested ? ' selected' : ''}" data-priority="${priority.id}" style="${style}">
                             <span class="priority-icon" style="font-size:2rem;">${priority.icon}</span>
                             <div class="priority-content">
-                                <div class="priority-title" style="font-weight:bold; font-size:1.2rem; color:${isSuggested !== -1 ? '#b91c1c' : '#6b7280'};">${priority.title}</div>
-                                <div class="priority-description" style="color:${isSuggested !== -1 ? '#991b1b' : '#6b7280'};">${priority.description}</div>
+                                <div class="priority-title" style="font-weight:bold; font-size:1.2rem; color:${isSuggested ? '#b91c1c' : '#6b7280'};">${priority.title}</div>
+                                <div class="priority-description" style="color:${isSuggested ? '#991b1b' : '#6b7280'};">${priority.description}</div>
                             </div>
                         </div>
                         `;
