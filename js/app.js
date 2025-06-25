@@ -99,22 +99,73 @@ function handleStartDiagnosis() {
 
 function showPrioritySelection() {
     const container = document.getElementById('questionsContainer');
+    // Prioridades sugeridas primeiro, depois as demais
+    const suggested = appState.selectedPriorities.map(p => clientPriorities[p.key]);
+    const remaining = Object.values(clientPriorities).filter(
+        p => !appState.selectedPriorities.find(sp => sp.id === p.id)
+    );
+    const allPriorities = [...suggested, ...remaining];
+
+    // Cores para destaque visual das 3 principais (vermelho)
+    const highlightColors = [
+        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 2px solid #b91c1c;', // vermelho forte
+        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 2px solid #b91c1c;',
+        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 2px solid #b91c1c;'
+    ];
+
+    // Cores por grupo de prioridade
+    const groupColors = {
+        energia_vitalidade:   'background: linear-gradient(90deg, #dbeafe 0%, #60a5fa 100%); border: 2px solid #2563eb;', // azul
+        dores_inflamacao:    'background: linear-gradient(90deg, #f3e8ff 0%, #a78bfa 100%); border: 2px solid #7c3aed;', // roxo
+        sono_regeneracao:    'background: linear-gradient(90deg, #fef9c3 0%, #fde68a 100%); border: 2px solid #f59e0b;', // amarelo
+        imunidade_prevencao: 'background: linear-gradient(90deg, #dcfce7 0%, #4ade80 100%); border: 2px solid #16a34a;', // verde
+        circulacao_cardiovascular: 'background: linear-gradient(90deg, #fce7f3 0%, #f472b6 100%); border: 2px solid #be185d;', // rosa
+        beleza_antiaging:    'background: linear-gradient(90deg, #f3f4f6 0%, #fbbf24 100%); border: 2px solid #f59e0b;', // cinza/amarelo
+        emagrecimento_metabolismo: 'background: linear-gradient(90deg, #fef3c7 0%, #fdba74 100%); border: 2px solid #f97316;', // laranja
+        performance_sexual:  'background: linear-gradient(90deg, #ede9fe 0%, #a5b4fc 100%); border: 2px solid #6366f1;', // lilás
+    };
+
+    // Legenda visual
+    const legendHTML = `
+        <div style='margin-bottom:12px;'>
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${highlightColors[0]}margin-right:6px;'></span> <b>Top 3 Prioridades (Críticas)</b>
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.energia_vitalidade}margin-left:18px;margin-right:6px;'></span> Energia/Vitalidade
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.dores_inflamacao}margin-left:18px;margin-right:6px;'></span> Dores/Inflamação
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.sono_regeneracao}margin-left:18px;margin-right:6px;'></span> Sono/Regeneração
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.imunidade_prevencao}margin-left:18px;margin-right:6px;'></span> Imunidade/Prevenção
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.circulacao_cardiovascular}margin-left:18px;margin-right:6px;'></span> Circulação/Cardio
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.beleza_antiaging}margin-left:18px;margin-right:6px;'></span> Beleza/Anti-aging
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.emagrecimento_metabolismo}margin-left:18px;margin-right:6px;'></span> Emagrecimento/Metabolismo
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${groupColors.performance_sexual}margin-left:18px;margin-right:6px;'></span> Performance Sexual
+        </div>
+    `;
+
     container.innerHTML = `
         <div class="question-card">
             <div class="question-title">🎯 Agora selecione suas PRINCIPAIS PRIORIDADES de saúde</div>
             <div class="question-subtitle">Com base nas suas respostas, sugerimos as prioridades abaixo em ordem de importância. Você pode ajustar se desejar.</div>
+            ${legendHTML}
             <div style="background: #f0fdfa; padding: 20px; border-radius: 12px; margin: 20px 0;">
                 <h4 style="color: #00b894; margin-bottom: 15px;">📋 Escolha suas prioridades:</h4>
                 <div id="priorityOptions" class="priority-options">
-                    ${Object.values(clientPriorities).map(priority => `
-                        <div class="priority-option${appState.selectedPriorities.find(p => p.id === priority.id) ? ' selected' : ''}" data-priority="${priority.id}">
+                    ${allPriorities.map((priority, idx) => {
+                        const isSuggested = appState.selectedPriorities.findIndex(p => p.id === priority.id);
+                        let style = '';
+                        if (isSuggested !== -1 && isSuggested < 3) {
+                            style = highlightColors[isSuggested];
+                        } else if (groupColors[priority.key]) {
+                            style = groupColors[priority.key];
+                        }
+                        return `
+                        <div class="priority-option${isSuggested !== -1 ? ' selected' : ''}" data-priority="${priority.id}" style="${style}">
                             <span class="priority-icon">${priority.icon}</span>
                             <div class="priority-content">
                                 <div class="priority-title">${priority.title}</div>
                                 <div class="priority-description">${priority.description}</div>
                             </div>
                         </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             </div>
             <div style="background: #fff7ed; padding: 20px; border-radius: 12px; margin: 20px 0;">
