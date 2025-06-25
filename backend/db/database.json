@@ -6,23 +6,32 @@
             "avatar": "👨‍💼",
             "role": "admin"
         },
+        "gestor": {
+            "password": "gestor123",
+            "name": "Gestor",
+            "avatar": "🧑‍💼",
+            "role": "gestor"
+        },
         "carlos.silva": {
             "password": "ozonteck2024",
             "name": "Carlos Silva",
             "avatar": "👨‍⚕️",
-            "role": "vendedor"
+            "role": "vendedor",
+            "gestor_id": "gestor"
         },
         "ana.santos": {
             "password": "vendas123",
             "name": "Ana Santos",
             "avatar": "👩‍💼",
-            "role": "vendedor"
+            "role": "vendedor",
+            "gestor_id": "gestor"
         },
         "pedro.oliveira": {
             "password": "saude456",
             "name": "Pedro Oliveira",
             "avatar": "👨‍🔬",
-            "role": "vendedor"
+            "role": "vendedor",
+            "gestor_id": "gestor"
         },
         "visitante": {
             "password": "demo123",
@@ -34,13 +43,15 @@
             "password": "teste123",
             "name": "Teste",
             "avatar": "👤",
-            "role": "vendedor"
+            "role": "vendedor",
+            "gestor_id": "gestor"
         },
         "Camila": {
             "password": "camila123",
             "name": "Camila",
             "avatar": "👤",
-            "role": "vendedor"
+            "role": "vendedor",
+            "gestor_id": "gestor"
         }
     },
     "clientPriorities": {
@@ -794,7 +805,14 @@
                 "lactação"
             ],
             "dosage": "2 cápsulas ao dia",
-            "stock": 150,
+            "stock": {
+                "admin": 150,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 5
+            },
             "active": true,
             "image": "backend\/uploads\/prod_685c39af705822.90953571.jpg"
         },
@@ -821,7 +839,14 @@
                 "insuficiência renal"
             ],
             "dosage": "1-2 cápsulas antes de dormir",
-            "stock": 120,
+            "stock": {
+                "admin": 120,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 1
+            },
             "active": true
         },
         "ÓLEO OZONIZADO": {
@@ -847,7 +872,14 @@
                 "alergia a componentes"
             ],
             "dosage": "Aplicar 2-3 vezes ao dia na área afetada",
-            "stock": 200,
+            "stock": {
+                "admin": 200,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 9
+            },
             "active": true,
             "image": "backend\/uploads\/prod_685c39c34c73c1.19276527.jpg"
         },
@@ -876,7 +908,14 @@
                 "uso de antidepressivos"
             ],
             "dosage": "1 cápsula 30min antes de dormir",
-            "stock": 90,
+            "stock": {
+                "admin": 90,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "NX CAP": {
@@ -901,7 +940,14 @@
                 "doenças autoimunes ativas"
             ],
             "dosage": "1-2 cápsulas ao dia",
-            "stock": 110,
+            "stock": {
+                "admin": 110,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "ÔMEGA 3": {
@@ -926,7 +972,14 @@
                 "alergia a peixes"
             ],
             "dosage": "1-2 cápsulas com refeições",
-            "stock": 180,
+            "stock": {
+                "admin": 180,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "VITA OZON PLUS": {
@@ -951,7 +1004,14 @@
                 "hipervitaminose"
             ],
             "dosage": "1 cápsula ao dia com refeição",
-            "stock": 100,
+            "stock": {
+                "admin": 100,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true,
             "image": "backend\/uploads\/prod_685c3a56113032.60005421.jpg"
         },
@@ -977,7 +1037,14 @@
                 "hipertensão severa"
             ],
             "dosage": "2 cápsulas antes do treino\/trabalho",
-            "stock": 80,
+            "stock": {
+                "admin": 80,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 1
+            },
             "active": true
         },
         "POWER TRI-MAGNÉSIO": {
@@ -1002,7 +1069,14 @@
                 "insuficiência renal grave"
             ],
             "dosage": "1-2 cápsulas ao dia",
-            "stock": 95,
+            "stock": {
+                "admin": 95,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "LUMINOUS VITA": {
@@ -1027,7 +1101,14 @@
                 "gravidez durante primeiro trimestre"
             ],
             "dosage": "2 cápsulas ao dia com refeição",
-            "stock": 70,
+            "stock": {
+                "admin": 70,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "BORY SLIM": {
@@ -1053,7 +1134,14 @@
                 "problemas cardíacos graves"
             ],
             "dosage": "1 cápsula 30min antes das principais refeições",
-            "stock": 120,
+            "stock": {
+                "admin": 120,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "XBOOSTER": {
@@ -1079,7 +1167,14 @@
                 "problemas cardíacos"
             ],
             "dosage": "1 cápsula 1h antes da relação",
-            "stock": 60,
+            "stock": {
+                "admin": 60,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "AMINA K2": {
@@ -1104,7 +1199,14 @@
                 "uso de anticoagulantes"
             ],
             "dosage": "1 cápsula ao dia",
-            "stock": 85,
+            "stock": {
+                "admin": 85,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "OZON FLEX": {
@@ -1130,7 +1232,14 @@
                 "alergia a componentes"
             ],
             "dosage": "1 sachê ao dia dissolvido em água",
-            "stock": 150,
+            "stock": {
+                "admin": 150,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "OZON LEV": {
@@ -1155,7 +1264,14 @@
                 "obstrução intestinal"
             ],
             "dosage": "1 sachê ao dia em jejum",
-            "stock": 18,
+            "stock": {
+                "admin": 18,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         },
         "NANO BLEND": {
@@ -1180,7 +1296,14 @@
                 "hipervitaminose"
             ],
             "dosage": "1 sachê a cada 3 dias",
-            "stock": 45,
+            "stock": {
+                "admin": 45,
+                "carlos.silva": 0,
+                "ana.santos": 0,
+                "pedro.oliveira": 0,
+                "teste": 0,
+                "Camila": 0
+            },
             "active": true
         }
     },
@@ -3312,6 +3435,101 @@
             ],
             "timestamp": "2025-06-25T20:12:22+02:00",
             "id": "diag_685c3c06ad2cc8.55885259"
+        }
+    ],
+    "sales": [
+        {
+            "id": "sale_685c4e498f15c6.46693319",
+            "cliente": {
+                "name": "Pedro asdfasd",
+                "email": "perdro@m.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "18-25"
+            },
+            "produtos": [
+                {
+                    "name": "ÓLEO OZONIZADO",
+                    "qtd": 1,
+                    "price": 89.9
+                },
+                {
+                    "name": "TRIMAGNÉSIO",
+                    "qtd": 1,
+                    "price": 159.9
+                }
+            ],
+            "desconto": 0,
+            "total": 249.8,
+            "pagamento": "pix",
+            "valor_recebido": 0,
+            "vendedor": "Camila",
+            "datahora": "2025-06-25T21:30:17+02:00"
+        },
+        {
+            "id": "sale_685c4eafbea8d5.90742537",
+            "cliente": {
+                "name": "Pedro asdfasd",
+                "email": "perdro@m.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "18-25"
+            },
+            "produtos": [
+                {
+                    "name": "TRIMAGNÉSIO",
+                    "qtd": 1,
+                    "price": 159.9
+                }
+            ],
+            "desconto": 0,
+            "total": 159.9,
+            "pagamento": "dinheiro",
+            "valor_recebido": 0,
+            "vendedor": "Camila",
+            "datahora": "2025-06-25T21:31:59+02:00"
+        },
+        {
+            "id": "sale_685c4f2a262df8.04900838",
+            "cliente": {
+                "name": "Pedro asdfasd",
+                "email": "perdro@m.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "18-25"
+            },
+            "produtos": [
+                {
+                    "name": "TRIMAGNÉSIO",
+                    "qtd": 1,
+                    "price": 159.9
+                }
+            ],
+            "desconto": 0,
+            "total": 159.9,
+            "pagamento": "dinheiro",
+            "valor_recebido": 170,
+            "vendedor": "Camila",
+            "datahora": "2025-06-25T21:34:02+02:00"
+        },
+        {
+            "id": "sale_685c4f4662cdd6.19997166",
+            "cliente": {
+                "name": "Pedro asdfasd",
+                "email": "perdro@m.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "18-25"
+            },
+            "produtos": [
+                {
+                    "name": "TRIMAGNÉSIO",
+                    "qtd": 1,
+                    "price": 159.9
+                }
+            ],
+            "desconto": 0,
+            "total": 159.9,
+            "pagamento": "pix",
+            "valor_recebido": 0,
+            "vendedor": "Camila",
+            "datahora": "2025-06-25T21:34:30+02:00"
         }
     ]
 }

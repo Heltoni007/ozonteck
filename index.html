@@ -8,12 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="header" id="mainHeader" style="text-align:center;">
-            <div class="logo">🌿 OZONTECK</div>
-            <div class="subtitle">Sistema Inteligente de Diagnóstico e Recomendação V5.0</div>
-            <div class="company-info">A maior fábrica de produtos ozonizados da América Latina</div>
-        </div>
-        <div id="actionButtons" style="display:flex;justify-content:center;gap:10px;margin-bottom:24px;align-items:center;"></div>
+        <div class="header" id="mainHeader" style="text-align:center;position:relative;display:flex;justify-content:center;align-items:center;height:64px;background:#141d2f;box-shadow:0 2px 12px #00b89411;"></div>
+        <div id="actionButtons" class="action-buttons" style="display:flex;justify-content:center;gap:18px;margin-bottom:24px;align-items:center;"></div>
 
         <!-- Seção de Login -->
         <div id="loginSection" class="section-card">
@@ -148,13 +144,67 @@
     <script src="js/app.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Esconde o cabeçalho se estiver na tela de login
-        const header = document.getElementById('mainHeader');
-        const loginSection = document.getElementById('loginSection');
-        if (header && loginSection && !loginSection.classList.contains('hidden')) {
-            header.style.display = 'none';
-        }
+        // Remover lógica que esconde o cabeçalho na tela de login
+        // O header deve sempre aparecer para garantir o menu hamburguer
     });
     </script>
+    <style>
+        .header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 64px;
+            background: #141d2f;
+            box-shadow: 0 2px 12px #00b89411;
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+        .action-buttons button {
+            font-size: 1.1em;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00d4aa 60%, #00b894 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 8px #00b89422;
+            transition: background 0.18s, color 0.18s;
+        }
+        .action-buttons button:hover {
+            background: linear-gradient(135deg, #00b894 60%, #00d4aa 100%);
+            color: #fff;
+        }
+        .action-buttons button.logout-btn {
+            margin-top: 18px;
+        }
+        @media (max-width: 700px) {
+            .action-buttons {
+                flex-direction: column;
+                gap: 14px;
+                margin-bottom: 18px;
+            }
+            .action-buttons button {
+                width: 90vw;
+                max-width: 400px;
+                font-size: 1.15em;
+                padding: 16px 0;
+            }
+            .action-buttons button.logout-btn {
+                margin-top: 24px;
+                width: 90vw;
+                max-width: 400px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </body>
 </html> 

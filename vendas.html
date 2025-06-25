@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Vendas - Ozonteck</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .sales-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00b894;
+            margin: 32px 0 10px 0;
+            letter-spacing: 1px;
+        }
+        .sales-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .sales-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .sales-table th, .sales-table td {
+            padding: 10px 8px;
+            text-align: left;
+        }
+        .sales-table th {
+            background: #00b894;
+            color: #fff;
+            font-weight: 700;
+        }
+        .sales-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .sales-table tr:hover {
+            background: #e0f7fa;
+        }
+        .export-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 700px) {
+            .sales-table th, .sales-table td { font-size: 0.95em; padding: 7px 4px; }
+            .sales-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='index.html'" class="btn btn-secondary btn-sm" style="margin-top:18px;margin-bottom:10px;display:block;">← Voltar</button>
+        <div class="sales-title">Relatório de Vendas</div>
+        <div class="sales-filters" id="salesFilters"></div>
+        <div class="export-btns">
+            <button class="btn btn-sm" id="exportCSV">Exportar CSV</button>
+            <button class="btn btn-sm" id="exportTXT">Exportar TXT</button>
+            <button class="btn btn-sm" id="exportPDF">Exportar PDF</button>
+        </div>
+        <div style="overflow-x:auto;">
+            <table class="sales-table" id="salesTable">
+                <thead>
+                    <tr>
+                        <th>Data/Hora</th>
+                        <th>Cliente</th>
+                        <th>Produtos</th>
+                        <th>Total</th>
+                        <th>Desconto</th>
+                        <th>Pagamento</th>
+                        <th>Vendedor</th>
+                    </tr>
+                </thead>
+                <tbody id="salesTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/sales_report.js"></script>
+</body>
+</html> 

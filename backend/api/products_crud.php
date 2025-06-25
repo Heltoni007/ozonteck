@@ -14,7 +14,7 @@ $data = readDatabase($databaseFile);
 
 switch ($method) {
     case 'GET':
-        // Listar todos os produtos
+        // Listar todos os produtos (estoque já vem por vendedor)
         echo json_encode($data['productDatabase']);
         break;
     case 'POST':

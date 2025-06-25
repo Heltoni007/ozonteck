@@ -20,14 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (isset($users[$username]) && $users[$username]['password'] === $password) {
                 $user_data = $users[$username];
-                unset($user_data['password']); // Nunca retorne a senha
-
-                http_response_code(200);
-                $response = [
-                    'error' => false,
-                    'message' => 'Login bem-sucedido!',
-                    'user' => $user_data
-                ];
+                if (isset($user_data['ativo']) && $user_data['ativo'] === false) {
+                    http_response_code(403);
+                    $response = [
+                        'error' => true,
+                        'message' => 'Seu acesso foi desativado. Fale com seu gestor.'
+                    ];
+                } else {
+                    unset($user_data['password']); // Nunca retorne a senha
+                    $user_data['username'] = $username;
+                    http_response_code(200);
+                    $response = [
+                        'error' => false,
+                        'message' => 'Login bem-sucedido!',
+                        'user' => $user_data
+                    ];
+                }
             } else {
                 http_response_code(401);
                 $response = ['error' => true, 'message' => 'Usuário ou senha incorretos.'];

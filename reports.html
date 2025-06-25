@@ -21,11 +21,37 @@
             </select>
         </div>
         <div id="diagnosticsReport"></div>
+        <div id="salesReportSection" style="margin-top:32px;">
+            <div style="font-size:1.15rem;font-weight:600;color:#00b894;margin-bottom:10px;text-align:center;">Relatório de Vendas</div>
+            <div id="salesFilters"></div>
+            <div style="overflow-x:auto;">
+                <table style="width:100%;min-width:600px;margin-top:10px;" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Cliente</th>
+                            <th>Produtos</th>
+                            <th>Total</th>
+                            <th>Desconto</th>
+                            <th>Pagamento</th>
+                            <th>Vendedor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salesTableBody"></tbody>
+                </table>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;">
+                <button id="exportCSV" class="btn btn-sm">Exportar CSV</button>
+                <button id="exportPDF" class="btn btn-sm">Exportar PDF</button>
+                <button id="exportTXT" class="btn btn-sm">Exportar TXT</button>
+            </div>
+        </div>
     </div>
     <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/sales_report.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Proteção: só permite acesso se estiver logado

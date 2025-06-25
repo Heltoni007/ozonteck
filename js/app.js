@@ -1037,9 +1037,9 @@ async function renderDiagnosticsReport() {
     // Filtro por vendedor para admin
     let user = appState.currentUser;
     let filterConsultant = null;
-    if (user && user.role === 'admin') {
-        // Obter lista de consultores únicos
-        const consultants = Array.from(new Set(diagnostics.map(d => d.consultant && d.consultant.name).filter(Boolean)));
+    if (user && (user.role === 'admin' || user.role === 'gestor')) {
+        // Obter lista de consultores únicos a partir dos diagnósticos filtrados
+        let consultants = Array.from(new Set(diagnostics.map(d => d.consultant && d.consultant.name).filter(Boolean)));
         let selectHTML = `<div style='margin-bottom:18px;'><label for='filterConsultant'><b>Filtrar por vendedor:</b></label> <select id='filterConsultant' class='btn btn-sm' style='width:auto;min-width:160px;'><option value=''>Todos</option>${consultants.map(c => `<option value='${c}'>${c}</option>`).join('')}</select></div>`;
         container.innerHTML = selectHTML;
         document.getElementById('filterConsultant').onchange = function(e) {
@@ -1199,6 +1199,13 @@ function renderActionButtons() {
         btnReports.innerHTML = '📊 Relatórios';
         btnReports.onclick = function() { window.location.href = 'reports.html'; };
         container.appendChild(btnReports);
+        // Botão de estoque
+        const btnCatalog = document.createElement('button');
+        btnCatalog.id = 'btnCatalog';
+        btnCatalog.className = 'btn btn-sm';
+        btnCatalog.innerHTML = '📦 Estoque';
+        btnCatalog.onclick = function() { window.location.href = 'catalogo.html'; };
+        container.appendChild(btnCatalog);
         // Botão Admin Produtos para admin
         if (user.role === 'admin') {
             const btnAdmin = document.createElement('button');
@@ -1207,6 +1214,15 @@ function renderActionButtons() {
             btnAdmin.innerHTML = '⚙️ Admin Produtos';
             btnAdmin.onclick = function() { window.location.href = 'admin_products.html'; };
             container.appendChild(btnAdmin);
+        }
+        // Botão Gestão de Equipe para admin/gestor
+        if (user.role === 'admin' || user.role === 'gestor') {
+            const btnEquipe = document.createElement('button');
+            btnEquipe.id = 'btnEquipe';
+            btnEquipe.className = 'btn btn-sm';
+            btnEquipe.innerHTML = '👥 Gestão de Equipe';
+            btnEquipe.onclick = function() { window.location.href = 'gestao_equipe.html'; };
+            container.appendChild(btnEquipe);
         }
         // Botão de logout sempre por último
         const btnLogout = document.createElement('button');
