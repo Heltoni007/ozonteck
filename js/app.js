@@ -66,15 +66,20 @@ function loadStateFromLocalStorage() {
 function handleStartDiagnosis() {
     const clientName = document.getElementById('clientName').value.trim();
     const clientEmail = document.getElementById('clientEmail').value.trim();
+    const clientWhatsapp = document.getElementById('clientWhatsapp').value.trim();
     const clientAgeRange = document.getElementById('clientAgeRange').value;
 
-    if (!clientName || !clientEmail || !clientAgeRange) {
+    if (!clientName || !clientEmail || !clientAgeRange || !clientWhatsapp) {
         showNotification('Por favor, preencha todos os dados do cliente.', 'error');
         return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clientEmail)) {
         showNotification('Por favor, insira um e-mail válido.', 'error');
+        return;
+    }
+    if (!/^\(\d{2}\) \d{5}-\d{4}$/.test(clientWhatsapp)) {
+        showNotification('Por favor, insira um WhatsApp válido.', 'error');
         return;
     }
 
@@ -84,6 +89,7 @@ function handleStartDiagnosis() {
     appState.clientData = {
         name: clientName,
         email: clientEmail,
+        whatsapp: clientWhatsapp,
         ageRange: clientAgeRange
     };
 
@@ -105,37 +111,36 @@ function showPrioritySelection() {
         p => !appState.selectedPriorities.find(sp => sp.id === p.id)
     );
     const allPriorities = [...suggested, ...remaining];
-    // Cores para as 3 principais (vermelho), neutro para as demais
+    // Cores para as 3 principais (borda vermelha, fundo branco), neutro para as demais
     const highlightColors = [
-        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;',
-        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;',
-        'background: linear-gradient(90deg, #fee2e2 0%, #ef4444 100%); border: 3px solid #b91c1c; box-shadow: 0 0 12px #ef4444;'
+        'background: #fff; border: 2.5px solid #ef4444;',
+        'background: #fff; border: 2.5px solid #ef4444;',
+        'background: #fff; border: 2.5px solid #ef4444;'
     ];
-    const neutralColor = 'background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%); border: 2px solid #d1d5db; color: #6b7280;';
+    const neutralColor = 'background: #fff; border: 2px solid #d1d5db; color: #6b7280;';
     // Legenda
     const legendHTML = `
         <div style='margin-bottom:12px;'>
-            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${highlightColors[0]}margin-right:6px;'></span> <b>Prioridade Crítica</b>
+            <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${highlightColors[0]}margin-right:6px;'></span> <b>Prioridade Sugerida</b>
             <span style='display:inline-block;width:18px;height:18px;vertical-align:middle;${neutralColor}margin-left:18px;margin-right:6px;'></span> Menor importância
         </div>
     `;
     container.innerHTML = `
         <div class="question-card">
             <div class="question-title">🎯 Agora selecione suas PRINCIPAIS PRIORIDADES de saúde</div>
-            <div class="question-subtitle">Estas são as 3 prioridades mais importantes para seu diagnóstico, em ordem de criticidade. Você pode reordenar ou trocar se desejar.</div>
+            <div class="question-subtitle">Selecione até 3 prioridades mais importantes para seu diagnóstico, em ordem de criticidade.</div>
             ${legendHTML}
             <div style="background: #f0fdfa; padding: 20px; border-radius: 12px; margin: 20px 0;">
                 <h4 style="color: #b91c1c; margin-bottom: 15px;">🔥 Prioridades do seu diagnóstico:</h4>
                 <div id="priorityOptions" class="priority-options" style="display: flex; flex-direction: column; gap: 18px;">
                     ${allPriorities.map((priority, idx) => {
-                        const isSuggested = idx < 3;
-                        const style = isSuggested ? highlightColors[idx] : neutralColor;
+                        const style = idx < 3 ? highlightColors[idx] : neutralColor;
                         return `
-                        <div class="priority-option${isSuggested ? ' selected' : ''}" data-priority="${priority.id}" style="${style}">
-                            <span class="priority-icon" style="font-size:2rem;">${priority.icon}</span>
+                        <div class="priority-option" data-priority="${priority.id}" style="${style} border-radius: 10px; padding: 18px; margin-bottom: 0; display: flex; align-items: center;">
+                            <span class="priority-icon" style="font-size:2rem; margin-right: 18px;">${priority.icon}</span>
                             <div class="priority-content">
-                                <div class="priority-title" style="font-weight:bold; font-size:1.2rem; color:${isSuggested ? '#b91c1c' : '#6b7280'};">${priority.title}</div>
-                                <div class="priority-description" style="color:${isSuggested ? '#991b1b' : '#6b7280'};">${priority.description}</div>
+                                <div class="priority-title" style="font-weight:bold; font-size:1.2rem; color:${idx < 3 ? '#b91c1c' : '#6b7280'};">${priority.title}</div>
+                                <div class="priority-description" style="color:${idx < 3 ? '#991b1b' : '#6b7280'};">${priority.description}</div>
                             </div>
                         </div>
                         `;
@@ -143,9 +148,8 @@ function showPrioritySelection() {
                 </div>
             </div>
             <div style="background: #fff7ed; padding: 20px; border-radius: 12px; margin: 20px 0;">
-                <h4 style="color: #f59e0b; margin-bottom: 15px;">🏆 Suas Prioridades Sugeridas:</h4>
+                <h4 style="color: #f59e0b; margin-bottom: 15px;">🏆 Suas Prioridades Selecionadas:</h4>
                 <div id="selectedPriorities" class="selected-priorities">
-                    <div class="empty-priority">Arraste para reordenar ou clique para trocar.</div>
                 </div>
             </div>
         </div>
@@ -205,12 +209,10 @@ function handlePriorityClick(element) {
 
 function updateSelectedPrioritiesDisplay() {
     const container = document.getElementById('selectedPriorities');
-    
     if (appState.selectedPriorities.length === 0) {
-        container.innerHTML = '<div class="empty-priority">Clique até 3 prioridades acima</div>';
+        container.innerHTML = '';
         return;
     }
-    
     const htmlContent = appState.selectedPriorities.map((priority, index) => `
         <div class="selected-priority-item" data-priority-id="${priority.id}">
             <div class="priority-order">${index + 1}º</div>
@@ -222,9 +224,7 @@ function updateSelectedPrioritiesDisplay() {
             <button class="remove-priority" onclick="removePriority(${priority.id})">✕</button>
         </div>
     `).join('');
-    
     container.innerHTML = htmlContent;
-    
     makePrioritiesSortable();
 }
 
@@ -546,20 +546,72 @@ function displayDiagnosticResults(diagnostic) {
         <div class="product-name">🎯 Diagnóstico Personalizado</div>
         <div class="product-description">${diagnostic.summary}</div>
         <div class="product-benefits">
-            <h4>Top 3 Prioridades:</h4>
+            <h4>Prioridades Selecionadas:</h4>
             <ul style="list-style: none; padding: 0;">
                 ${diagnostic.priorities.map((p, i) => `
-                    <li style="margin-bottom: 12px;">
+                    <li style="margin-bottom: 18px;">
                         <strong>${i+1}º ${p.icon} ${p.name}</strong> <span style="color:#64748b; font-size:13px;">(${p.gravity}, Pontuação: ${p.score})</span><br>
-                        <span style="color:#64748b; font-size:14px;">${p.benefitsText}</span><br>
-                        ${p.recommendation.length > 0 ? `<b>Recomendação:</b> <span style=\"color:#00b894;\">${p.recType}</span> - ${p.recommendation.map(prod => productDatabase[prod]?.name || prod).join(', ')}` : '<i>Nenhum produto recomendado</i>'}
+                        <span style="color:#64748b; font-size:14px;">${p.benefitsText}</span>
                     </li>
                 `).join('')}
             </ul>
         </div>
     </div>`;
-    // Bloco de debug visual temporário
-    html += `<pre style='background:#f8fafc;color:#334155;padding:12px;border-radius:8px;margin-top:24px;font-size:13px;'>DEBUG: ${JSON.stringify(diagnostic, null, 2)}</pre>`;
+
+    // Produtos detalhados em cards únicos
+    // Map: produto -> {motivos: [benefitsText de cada prioridade], prioridades: [nomes]}
+    const productMap = {};
+    diagnostic.priorities.forEach(priority => {
+        priority.recommendation.forEach(prod => {
+            if (!productMap[prod]) {
+                productMap[prod] = {
+                    motivos: [],
+                    prioridades: [],
+                    recType: priority.recType
+                };
+            }
+            if (!productMap[prod].motivos.includes(priority.benefitsText)) {
+                productMap[prod].motivos.push(priority.benefitsText);
+            }
+            if (!productMap[prod].prioridades.includes(priority.name)) {
+                productMap[prod].prioridades.push(priority.name);
+            }
+        });
+    });
+    const uniqueProducts = Object.keys(productMap);
+    html += `<div style='margin-top:32px;'></div>`;
+    uniqueProducts.forEach(prod => {
+        const prodObj = productDatabase[prod];
+        if (!prodObj) return;
+        const img = prodObj.image ? prodObj.image : 'https://cdn.jsdelivr.net/gh/feathericons/feather@4.28.0/icons/image.svg';
+        html += `
+        <div class="product-card" style="margin-bottom: 32px; border-left: 6px solid #00b894; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,0.07); border-radius:14px; padding:28px 18px 18px 18px; display:flex; flex-direction:column; align-items:center;">
+            <img src='${img}' alt='img' style='width:140px;height:140px;object-fit:cover;border-radius:16px;border:2.5px solid #d1fae5;background:#f0fdfa;display:block;margin-bottom:18px;'>
+            <div class="product-header" style='text-align:center;width:100%;'>
+                <div class="product-name" style='font-size:1.35rem;font-weight:700;margin-bottom:2px;'>${prodObj.name}</div>
+                <div class="product-code" style='color:#64748b;font-size:13px;margin-bottom:2px;'>Código: ${prodObj.code}</div>
+                <div class="product-price" style='color:#00b894;font-weight:600;margin-bottom:6px;'>R$ ${prodObj.price.toFixed(2)}</div>
+            </div>
+            <div class="product-category" style='color:#2563eb;font-size:13px;text-align:center;margin-bottom:6px;'>${prodObj.category}</div>
+            <div class="product-description" style='margin:8px 0 8px 0;text-align:center;'>${prodObj.description}</div>
+            <div class="product-benefits" style='width:100%;'>
+                <h4 style='margin:0 0 4px 0;font-size:1rem;text-align:center;'>Principais Benefícios:</h4>
+                <ul style='margin:0 0 8px 0;'>
+                    ${prodObj.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="product-usage" style='margin-bottom:6px;'><strong>Dosagem:</strong> ${prodObj.dosage}</div>
+            <div class="product-stock ${prodObj.stock < 50 ? 'low-stock' : ''}" style='margin-bottom:6px;'><strong>Estoque:</strong> ${prodObj.stock} unidades${prodObj.stock < 50 ? '<span class="stock-warning"> (Estoque baixo!)</span>' : ''}</div>
+            <div class="product-reason" style="margin-top:8px;width:100%;">
+                <b>Motivo da recomendação:</b><br>
+                <ul style='margin:0; padding-left:18px;'>
+                    ${productMap[prod].prioridades.map((prio, idx) => `<li><b>${prio}:</b> ${productMap[prod].motivos[idx]}</li>`).join('')}
+                </ul>
+                <div style='margin-top:6px; color:#00b894;'><b>Tipo de recomendação:</b> ${productMap[prod].recType}</div>
+            </div>
+        </div>
+        `;
+    });
     container.innerHTML = html;
 }
 
@@ -865,21 +917,39 @@ function validateDataIntegrity() {
 }
 
 function setupEventListeners() {
-    document.getElementById('loginBtn').addEventListener('click', handleLogin);
-    document.getElementById('addUserBtn').addEventListener('click', addUser);
-    document.getElementById('startDiagnosisBtn').addEventListener('click', handleStartDiagnosis);
-    document.getElementById('nextBtn').addEventListener('click', nextQuestion);
-    document.getElementById('finishBtn').addEventListener('click', finishQuiz);
-    document.getElementById('restartBtn').addEventListener('click', restartQuiz);
-    document.getElementById('logoutBtn').addEventListener('click', () => handleLogout());
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) loginBtn.addEventListener('click', handleLogin);
+    const addUserBtn = document.getElementById('addUserBtn');
+    if (addUserBtn) addUserBtn.addEventListener('click', addUser);
+    const startDiagnosisBtn = document.getElementById('startDiagnosisBtn');
+    if (startDiagnosisBtn) startDiagnosisBtn.addEventListener('click', handleStartDiagnosis);
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
+    const finishBtn = document.getElementById('finishBtn');
+    if (finishBtn) finishBtn.addEventListener('click', finishQuiz);
+    const restartBtn = document.getElementById('restartBtn');
+    if (restartBtn) restartBtn.addEventListener('click', restartQuiz);
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.addEventListener('click', () => handleLogout());
 
     // Listeners da tecla Enter
-    document.getElementById('loginUser').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleLogin();
-    });
-    document.getElementById('loginPass').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleLogin();
-    });
+    const loginUser = document.getElementById('loginUser');
+    if (loginUser) loginUser.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+    const loginPass = document.getElementById('loginPass');
+    if (loginPass) loginPass.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+
+    const btnShowReports = document.getElementById('btnShowReports');
+    if (btnShowReports) {
+        btnShowReports.addEventListener('click', function() {
+            window.location.href = 'reports.html';
+        });
+    }
+    const btnLogout = document.getElementById('btnLogout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', function() {
+            if (typeof handleLogout === 'function') handleLogout();
+        });
+    }
 }
 
 // =================================================================
@@ -900,4 +970,278 @@ function debugSystemState() {
 // Expor função de debug globalmente para desenvolvimento
 window.debugOzonteck = debugSystemState;
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/ozonteck/' || window.location.pathname === '/ozonteck/index.html') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+}
+
+// Adicionar máscara de WhatsApp ao carregar a tela de dados do cliente
+function setupWhatsappMask() {
+    const input = document.getElementById('clientWhatsapp');
+    if (!input) return;
+    input.addEventListener('input', function(e) {
+        let v = input.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 6) {
+            input.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        } else if (v.length > 2) {
+            input.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        } else if (v.length > 0) {
+            input.value = `(${v}`;
+        }
+    });
+}
+
+// Chamar a máscara ao inicializar o app e ao mostrar o formulário
+const origShowClientDataSection = typeof showClientDataSection === 'function' ? showClientDataSection : null;
+function showClientDataSectionWithMask() {
+    if (origShowClientDataSection) origShowClientDataSection();
+    setupWhatsappMask();
+}
+window.addEventListener('DOMContentLoaded', setupWhatsappMask);
+
+// Função para buscar diagnósticos do backend
+async function fetchDiagnostics() {
+    // Garante que appState.currentUser está preenchido ao acessar reports.html
+    if (!appState.currentUser) {
+        const userSession = sessionStorage.getItem('ozonteckUserSession');
+        if (userSession) {
+            appState.currentUser = JSON.parse(userSession);
+        }
+    }
+    const user = appState.currentUser;
+    const response = await fetch('backend/api/get_diagnostics.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user })
+    });
+    const data = await response.json();
+    return data.diagnostics;
+}
+
+// Função para fechar venda
+async function closeSale(diagnosticId) {
+    await fetch('backend/api/close_sale.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: diagnosticId })
+    });
+    showNotification('Venda fechada com sucesso!', 'success');
+    renderDiagnosticsReport(); // Atualiza a tela
+}
+
+// Função para renderizar relatórios
+async function renderDiagnosticsReport() {
+    const diagnostics = await fetchDiagnostics();
+    const container = document.getElementById('diagnosticsReport');
+    if (!container) return;
+    // Filtro por vendedor para admin
+    let user = appState.currentUser;
+    let filterConsultant = null;
+    if (user && user.role === 'admin') {
+        // Obter lista de consultores únicos
+        const consultants = Array.from(new Set(diagnostics.map(d => d.consultant && d.consultant.name).filter(Boolean)));
+        let selectHTML = `<div style='margin-bottom:18px;'><label for='filterConsultant'><b>Filtrar por vendedor:</b></label> <select id='filterConsultant' class='btn btn-sm' style='width:auto;min-width:160px;'><option value=''>Todos</option>${consultants.map(c => `<option value='${c}'>${c}</option>`).join('')}</select></div>`;
+        container.innerHTML = selectHTML;
+        document.getElementById('filterConsultant').onchange = function(e) {
+            renderDiagnosticsReportFiltered(e.target.value);
+        };
+        filterConsultant = document.getElementById('filterConsultant').value;
+    }
+    renderDiagnosticsReportFiltered(filterConsultant);
+}
+
+async function renderDiagnosticsReportFiltered(consultantName) {
+    const diagnostics = await fetchDiagnostics();
+    const container = document.getElementById('diagnosticsReport');
+    let filtered = diagnostics;
+    if (consultantName) {
+        filtered = diagnostics.filter(d => d.consultant && d.consultant.name === consultantName);
+    }
+    // Manter o select de filtro sempre no topo e manter o valor selecionado
+    const select = document.getElementById('filterConsultant');
+    let html = '';
+    let selectedValue = consultantName || '';
+    if (select) {
+        // Reconstruir o select mantendo o valor selecionado
+        const options = Array.from(select.options).map(opt => `<option value='${opt.value}'${opt.value===selectedValue?' selected':''}>${opt.textContent}</option>`).join('');
+        html += `<div style='margin-bottom:18px;'><label for='filterConsultant'><b>Filtrar por vendedor:</b></label> <select id='filterConsultant' class='btn btn-sm' style='width:auto;min-width:160px;'>${options}</select></div>`;
+    }
+    if (!filtered.length) {
+        container.innerHTML = (html || '') + '<div style="color:#64748b;">Nenhum diagnóstico encontrado.</div>';
+        if (select) document.getElementById('filterConsultant').onchange = function(e) { renderDiagnosticsReportFiltered(e.target.value); };
+        return;
+    }
+    html += filtered.map(diag => {
+        const statusClass = diag.closed ? 'status-fechado' : 'status-aberto';
+        const statusText = diag.closed ? 'Fechado' : 'Aberto';
+        const icon = diag.consultant.avatar || '👤';
+        return `
+        <div class="diagnostic-card">
+            <div style="display:flex;align-items:center;gap:18px;margin-bottom:10px;">
+                <div style="font-size:2.2rem;">${icon}</div>
+                <div>
+                    <div style="font-weight:700;font-size:1.1rem;">${diag.client.name}</div>
+                    <div style="color:#64748b;font-size:13px;">${diag.client.email}</div>
+                    <div style="color:#00b894;font-size:13px;">${diag.client.whatsapp || '-'}</div>
+                </div>
+            </div>
+            <div style="margin-bottom:8px;"><b>Consultor:</b> ${diag.consultant.name}</div>
+            <div style="margin-bottom:8px;"><b>Data/Hora:</b> ${diag.timestamp ? new Date(diag.timestamp).toLocaleString() : '-'}</div>
+            <div style="margin-bottom:8px;"><b>Prioridades:</b> <span style="color:#2563eb;">${diag.priorities ? diag.priorities.map(p => `${p.icon || ''} ${p.title}`).join(', ') : '-'}</span></div>
+            <div style="margin-bottom:8px;"><b>Produtos:</b> <span style="color:#0a4d3c;">${diag.priorities ? diag.priorities.flatMap(p => p.products).join(', ') : '-'}</span></div>
+            <div style="margin-bottom:8px;"><b>Status:</b> <span class="${statusClass}">${statusText}</span></div>
+            ${!diag.closed ? `<button onclick="closeSale('${diag.id}')">Fechar Venda</button>` : `<div style='margin-top:8px;'><b>Fechado em:</b> ${diag.closedAt ? new Date(diag.closedAt).toLocaleString() : ''}</div>`}
+        </div>
+        `;
+    }).join('');
+    container.innerHTML = html;
+    if (select) document.getElementById('filterConsultant').onchange = function(e) { renderDiagnosticsReportFiltered(e.target.value); };
+}
+
+function getFilteredDiagnosticsForExport(diagnostics) {
+    const select = document.getElementById('filterConsultant');
+    if (select && select.value) {
+        return diagnostics.filter(d => d.consultant && d.consultant.name === select.value);
+    }
+    return diagnostics;
+}
+
+// Função para exportar relatórios em CSV
+async function exportDiagnosticsCSV() {
+    const diagnostics = getFilteredDiagnosticsForExport(await fetchDiagnostics());
+    if (!diagnostics.length) return alert('Nenhum relatório para exportar!');
+    const header = ['Cliente','Email','WhatsApp','Consultor','Data/Hora','Prioridades','Produtos','Status'];
+    const rows = diagnostics.map(diag => [
+        diag.client.name,
+        diag.client.email,
+        diag.client.whatsapp || '-',
+        diag.consultant.name,
+        diag.timestamp ? new Date(diag.timestamp).toLocaleString() : '-',
+        diag.priorities ? diag.priorities.map(p => (p.icon ? p.icon+' ':'')+p.title).join(' | ') : '-',
+        diag.priorities ? diag.priorities.flatMap(p => p.products).join(' | ') : '-',
+        diag.closed ? 'Fechado' : 'Aberto'
+    ]);
+    let csv = header.join(';') + '\n';
+    rows.forEach(r => { csv += r.map(v => '"'+String(v).replace(/"/g,'""')+'"').join(';')+'\n'; });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'relatorios_ozonteck.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+// Função para exportar relatórios em TXT
+async function exportDiagnosticsTXT() {
+    const diagnostics = getFilteredDiagnosticsForExport(await fetchDiagnostics());
+    if (!diagnostics.length) return alert('Nenhum relatório para exportar!');
+    let txt = '';
+    diagnostics.forEach((diag, i) => {
+        txt += `Relatório #${i+1}\n`;
+        txt += `Cliente: ${diag.client.name}\nEmail: ${diag.client.email}\nWhatsApp: ${diag.client.whatsapp || '-'}\nConsultor: ${diag.consultant.name}\nData/Hora: ${diag.timestamp ? new Date(diag.timestamp).toLocaleString() : '-'}\n`;
+        txt += `Prioridades: ${diag.priorities ? diag.priorities.map(p => (p.icon ? p.icon+' ':'')+p.title).join(', ') : '-'}\n`;
+        txt += `Produtos: ${diag.priorities ? diag.priorities.flatMap(p => p.products).join(', ') : '-'}\n`;
+        txt += `Status: ${diag.closed ? 'Fechado' : 'Aberto'}\n`;
+        txt += `-----------------------------\n`;
+    });
+    const blob = new Blob([txt], {type: 'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'relatorios_ozonteck.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+// Função para exportar relatórios em PDF (simples)
+async function exportDiagnosticsPDF() {
+    const diagnostics = getFilteredDiagnosticsForExport(await fetchDiagnostics());
+    if (!diagnostics.length) return alert('Nenhum relatório para exportar!');
+    let win = window.open('', '', 'width=900,height=700');
+    win.document.write('<html><head><title>Relatórios Ozonteck</title>');
+    win.document.write('<style>body{font-family:sans-serif;}h2{color:#00b894;}table{border-collapse:collapse;width:100%;}th,td{border:1px solid #ccc;padding:8px;}th{background:#f0fdfa;}tr:nth-child(even){background:#f8fafc;}</style>');
+    win.document.write('</head><body>');
+    win.document.write('<h2>Relatórios Ozonteck</h2>');
+    win.document.write('<table><thead><tr><th>Cliente</th><th>Email</th><th>WhatsApp</th><th>Consultor</th><th>Data/Hora</th><th>Prioridades</th><th>Produtos</th><th>Status</th></tr></thead><tbody>');
+    diagnostics.forEach(diag => {
+        win.document.write('<tr>');
+        win.document.write(`<td>${diag.client.name}</td>`);
+        win.document.write(`<td>${diag.client.email}</td>`);
+        win.document.write(`<td>${diag.client.whatsapp || '-'}</td>`);
+        win.document.write(`<td>${diag.consultant.name}</td>`);
+        win.document.write(`<td>${diag.timestamp ? new Date(diag.timestamp).toLocaleString() : '-'}</td>`);
+        win.document.write(`<td>${diag.priorities ? diag.priorities.map(p => (p.icon ? p.icon+' ':'')+p.title).join(' | ') : '-'}</td>`);
+        win.document.write(`<td>${diag.priorities ? diag.priorities.flatMap(p => p.products).join(' | ') : '-'}</td>`);
+        win.document.write(`<td>${diag.closed ? 'Fechado' : 'Aberto'}</td>`);
+        win.document.write('</tr>');
+    });
+    win.document.write('</tbody></table>');
+    win.document.write('</body></html>');
+    win.document.close();
+    win.print();
+}
+
+function renderActionButtons() {
+    const container = document.getElementById('actionButtons');
+    if (!container) return;
+    // Tenta obter usuário do appState ou localStorage
+    let user = (window.appState && appState.currentUser) ? appState.currentUser : null;
+    if (!user) {
+        try {
+            user = JSON.parse(localStorage.getItem('ozonUser'));
+        } catch (e) { user = null; }
+    }
+    // Só mostra botões se estiver logado
+    if (user) {
+        container.innerHTML = '';
+        container.style.display = 'flex';
+        // Botão de relatórios
+        const btnReports = document.createElement('button');
+        btnReports.id = 'btnShowReports';
+        btnReports.className = 'btn btn-sm';
+        btnReports.innerHTML = '📊 Relatórios';
+        btnReports.onclick = function() { window.location.href = 'reports.html'; };
+        container.appendChild(btnReports);
+        // Botão Admin Produtos para admin
+        if (user.role === 'admin') {
+            const btnAdmin = document.createElement('button');
+            btnAdmin.id = 'btnAdminProducts';
+            btnAdmin.className = 'btn btn-secondary btn-sm';
+            btnAdmin.innerHTML = '⚙️ Admin Produtos';
+            btnAdmin.onclick = function() { window.location.href = 'admin_products.html'; };
+            container.appendChild(btnAdmin);
+        }
+        // Botão de logout sempre por último
+        const btnLogout = document.createElement('button');
+        btnLogout.id = 'btnLogout';
+        btnLogout.className = 'btn btn-sm';
+        btnLogout.title = 'Sair';
+        btnLogout.style.display = 'flex';
+        btnLogout.style.alignItems = 'center';
+        btnLogout.style.gap = '4px';
+        btnLogout.style.marginLeft = 'auto';
+        btnLogout.innerHTML = '<span style="font-size:1.2em;">⏻</span> Sair';
+        btnLogout.onclick = function() { if (typeof handleLogout === 'function') handleLogout(); };
+        container.appendChild(btnLogout);
+        // Ajuste flex para garantir o logout à direita
+        container.style.justifyContent = 'flex-start';
+        container.style.alignItems = 'center';
+        container.style.gap = '10px';
+    } else {
+        // Se não logado, oculta e limpa o container
+        container.innerHTML = '';
+        container.style.display = 'none';
+    }
+}
+
+// Adicionar chamadas reais:
+// ... existing code ...
+// No final do DOMContentLoaded:
+document.addEventListener('DOMContentLoaded', function() {
+    // ... outros event listeners ...
+    renderActionButtons();
+});
+// ... existing code ...
+// No handleLogin (em js/auth.js), após sucesso:
+// renderActionButtons();
+// No handleLogout (em js/auth.js), após sucesso:
+// renderActionButtons();
+// No checkActiveSession (em js/auth.js), após restaurar sessão:
+// renderActionButtons();

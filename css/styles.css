@@ -127,6 +127,14 @@ input:focus, .select-style:focus {
     box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
 }
 
+.btn-sm {
+    padding: 7px 16px;
+    font-size: 13px;
+    border-radius: 8px;
+    min-width: 0;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.13);
+}
+
 .question-card {
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     padding: 30px;
@@ -748,6 +756,25 @@ input:focus, .select-style:focus {
     opacity: 0.5;
 }
 
+select.btn, select.btn-sm {
+    background: #fff !important;
+    color: #1e293b !important;
+    border: 2px solid #00b894 !important;
+    border-radius: 8px;
+    font-size: 13px;
+    padding: 7px 16px;
+    min-width: 0;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.13);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+select.btn:focus, select.btn-sm:focus {
+    outline: none;
+    border-color: #00d4aa;
+    box-shadow: 0 0 0 4px rgba(0, 212, 170, 0.1);
+}
+
 /* =================================================================
    RESPONSIVIDADE
    ================================================================= */
@@ -826,4 +853,77 @@ input:focus, .select-style:focus {
         font-size: 10px;
         padding: 3px 25px;
     }
+}
+
+/* Card de relatório de diagnóstico */
+.diagnostic-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
+  border-left: 6px solid #00b894;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  margin-bottom: 24px;
+  padding: 22px 20px 18px 20px;
+  color: #22292f;
+  transition: box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.diagnostic-card:hover {
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
+}
+.diagnostic-card b {
+  color: #0a4d3c;
+}
+.diagnostic-card .status-aberto {
+  color: #f59e42;
+  font-weight: bold;
+}
+.diagnostic-card .status-fechado {
+  color: #16a34a;
+  font-weight: bold;
+}
+.diagnostic-card button {
+  background: #00b894;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.diagnostic-card button:hover {
+  background: #00916e;
+}
+@media (max-width: 600px) {
+  .diagnostic-card {
+    padding: 14px 6px 12px 6px;
+    font-size: 0.98rem;
+  }
+}
+
+/* Container de relatórios responsivo */
+#diagnosticsReport {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  padding: 0 8px;
+}
+
+.btn-logout {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-logout:hover {
+  background: #f0fdfa;
+  color: #00b894;
 }

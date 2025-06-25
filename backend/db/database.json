@@ -35,6 +35,12 @@
             "name": "Teste",
             "avatar": "👤",
             "role": "vendedor"
+        },
+        "Camila": {
+            "password": "camila123",
+            "name": "Camila",
+            "avatar": "👤",
+            "role": "vendedor"
         }
     },
     "clientPriorities": {
@@ -789,7 +795,8 @@
             ],
             "dosage": "2 cápsulas ao dia",
             "stock": 150,
-            "active": true
+            "active": true,
+            "image": "backend\/uploads\/prod_685c39af705822.90953571.jpg"
         },
         "TRIMAGNÉSIO": {
             "name": "TRIMAGNÉSIO",
@@ -841,7 +848,8 @@
             ],
             "dosage": "Aplicar 2-3 vezes ao dia na área afetada",
             "stock": 200,
-            "active": true
+            "active": true,
+            "image": "backend\/uploads\/prod_685c39c34c73c1.19276527.jpg"
         },
         "DREAM BLISS": {
             "name": "DREAM BLISS",
@@ -944,7 +952,8 @@
             ],
             "dosage": "1 cápsula ao dia com refeição",
             "stock": 100,
-            "active": true
+            "active": true,
+            "image": "backend\/uploads\/prod_685c3a56113032.60005421.jpg"
         },
         "VIRTUOSOS CAPS": {
             "name": "VIRTUOSOS CAPS",
@@ -1146,7 +1155,7 @@
                 "obstrução intestinal"
             ],
             "dosage": "1 sachê ao dia em jejum",
-            "stock": 180,
+            "stock": 18,
             "active": true
         },
         "NANO BLEND": {
@@ -1439,6 +1448,1870 @@
             ],
             "id": "diag_685ae0cc869b12.40226496",
             "timestamp": "2025-06-24T17:30:52+00:00"
+        },
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "sdfss",
+                "email": "sdfsdf@dd.com",
+                "ageRange": "18-25"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 0,
+                    "order": 1
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "key": "dores_inflamacao",
+                    "score": 0,
+                    "order": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
+                    "key": "sono_regeneracao",
+                    "score": 0,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [
+                        "VIRTUOSOS CAPS",
+                        "OZON FLEX"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T17:26:49+02:00",
+            "id": "diag_685c1539b35a62.69966265"
+        },
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "jjjjj",
+                "email": "ddd@web.com",
+                "ageRange": "26-35"
+            },
+            "priorities": [
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 28,
+                    "order": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
+                    "key": "sono_regeneracao",
+                    "score": 24,
+                    "order": 3
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS",
+                        "ÔMEGA 3"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "TRIMAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS",
+                        "NANO BLEND"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3",
+                        "DREAM BLISS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON FLEX",
+                        "LIFE CHI",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T17:28:43+02:00",
+            "id": "diag_685c15ab15d4d9.97490513"
+        },
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "hdhdh",
+                "email": "sgsdgsdg@m.com",
+                "ageRange": "36-45"
+            },
+            "priorities": [
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 12,
+                    "order": 1
+                },
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 0,
+                    "order": 2
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "key": "dores_inflamacao",
+                    "score": 0,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [
+                        "VIRTUOSOS CAPS",
+                        "OZON FLEX"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T17:30:38+02:00",
+            "id": "diag_685c161e37ab22.75178524"
+        },
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "nnn",
+                "email": "xxz@sd.com",
+                "ageRange": "36-45"
+            },
+            "priorities": [
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 28,
+                    "order": 1
+                },
+                {
+                    "id": 4,
+                    "title": "Fortalecer Imunidade e Prevenção",
+                    "icon": "🛡️",
+                    "description": "Blindar organismo contra infecções, prevenir patologias e aumentar resistência natural",
+                    "products": [
+                        "NX CAP",
+                        "OZON MUNITY",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "NX CAP",
+                    "urgency": "alta",
+                    "benefitsText": "Fortalece o sistema imune, combate radicais livres e aumenta a defesa do organismo",
+                    "key": "imunidade_prevencao",
+                    "score": 16,
+                    "order": 3
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "key": "dores_inflamacao",
+                    "score": 20,
+                    "order": 2
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS",
+                        "ÔMEGA 3"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3",
+                        "DREAM BLISS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [
+                        "VIRTUOSOS CAPS",
+                        "OZON FLEX"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T17:40:26+02:00",
+            "id": "diag_685c186ae23d24.12751170"
+        },
+        {
+            "consultant": {
+                "name": "Carlos Silva",
+                "avatar": "👨‍⚕️",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "teste",
+                "email": "heltoni.wh@gmail.com",
+                "ageRange": "26-35"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 32,
+                    "order": 1
+                },
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 28,
+                    "order": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
+                    "key": "sono_regeneracao",
+                    "score": 24,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS",
+                        "ÔMEGA 3"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "TRIMAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS",
+                        "NANO BLEND"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3",
+                        "DREAM BLISS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON FLEX",
+                        "LIFE CHI",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T17:44:34+02:00",
+            "id": "diag_685c1962e48d26.26530134"
+        },
+        {
+            "consultant": {
+                "name": "Camila",
+                "avatar": "👤",
+                "role": "vendedor"
+            },
+            "client": {
+                "name": "Pedro asdfasd",
+                "email": "perdro@m.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "18-25"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 20,
+                    "order": 1
+                },
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "key": "dores_inflamacao",
+                    "score": 12,
+                    "order": 2
+                },
+                {
+                    "id": 4,
+                    "title": "Fortalecer Imunidade e Prevenção",
+                    "icon": "🛡️",
+                    "description": "Blindar organismo contra infecções, prevenir patologias e aumentar resistência natural",
+                    "products": [
+                        "NX CAP",
+                        "OZON MUNITY",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "NX CAP",
+                    "urgency": "alta",
+                    "benefitsText": "Fortalece o sistema imune, combate radicais livres e aumenta a defesa do organismo",
+                    "key": "imunidade_prevencao",
+                    "score": 8,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "LIFE CHI"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "NX CAP"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [
+                        "OZON LEV"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T19:00:11+02:00",
+            "id": "diag_685c2b1bd6ac83.95485904"
+        },
+        {
+            "consultant": {
+                "name": "Administrador",
+                "avatar": "👨‍💼",
+                "role": "admin"
+            },
+            "client": {
+                "name": "teste",
+                "email": "heltoni.wd@gmail.com",
+                "whatsapp": "(85) 98888-8885",
+                "ageRange": "36-45"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 21,
+                    "order": 1
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
+                    "key": "sono_regeneracao",
+                    "score": 6,
+                    "order": 2
+                },
+                {
+                    "id": 8,
+                    "title": "Performance Sexual e Libido",
+                    "icon": "💪",
+                    "description": "Aumentar libido, melhorar performance sexual e equilibrar hormônios naturalmente",
+                    "products": [
+                        "XBOOSTER",
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "mainProduct": "XBOOSTER",
+                    "urgency": "média",
+                    "benefitsText": "Aumenta libido, melhora performance, equilibra hormônios e aumenta a energia",
+                    "key": "performance_sexual",
+                    "score": 4,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [
+                        "ÔMEGA 3"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 1,
+                    "selectedWeight": 0,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [
+                        "ÓLEO OZONIZADO"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T20:03:52+02:00",
+            "id": "diag_685c3a08679008.97107752"
+        },
+        {
+            "consultant": {
+                "name": "Administrador",
+                "avatar": "👨‍💼",
+                "role": "admin"
+            },
+            "client": {
+                "name": "Pedro asdfasddd",
+                "email": "fsd@sdf.com",
+                "whatsapp": "(85) 98888-8883",
+                "ageRange": "26-35"
+            },
+            "priorities": [
+                {
+                    "id": 2,
+                    "title": "Eliminar Dores e Inflamações Crônicas",
+                    "icon": "🩹",
+                    "description": "Acabar com dores musculares, articulares, fibromialgia e processos inflamatórios persistentes",
+                    "products": [
+                        "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                        "OZON FLEX",
+                        "ÔMEGA 3"
+                    ],
+                    "mainProduct": "LIFE SHII GEL MASSAGEADOR OZONIZADO",
+                    "urgency": "alta",
+                    "benefitsText": "Alívio de dores musculares e articulares, reduz inflamação sistêmica, melhora mobilidade",
+                    "key": "dores_inflamacao",
+                    "score": 13,
+                    "order": 2
+                },
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 11,
+                    "order": 3
+                },
+                {
+                    "id": 6,
+                    "title": "Beleza Natural e Anti-aging",
+                    "icon": "✨",
+                    "description": "Pele radiante, cabelos fortes, unhas saudáveis e combate ao envelhecimento precoce",
+                    "products": [
+                        "LUMINOUS VITA",
+                        "LUMINOZ SERUM FACIAL",
+                        "ÓLEO OZONIZADO"
+                    ],
+                    "mainProduct": "LUMINOUS VITA",
+                    "urgency": "média",
+                    "benefitsText": "Estimula colágeno, pele radiante, cabelos e unhas fortes, combate o envelhecimento",
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 2,
+                    "selectedWeight": 1,
+                    "products": [],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 3,
+                    "selectedWeight": 2,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T20:06:24+02:00",
+            "id": "diag_685c3aa0a2b0f5.56841933"
+        },
+        {
+            "consultant": {
+                "name": "Administrador",
+                "avatar": "👨‍💼",
+                "role": "admin"
+            },
+            "client": {
+                "name": "ggggg",
+                "email": "bxbcc@sdds.com",
+                "whatsapp": "(85) 98888-8888",
+                "ageRange": "26-35"
+            },
+            "priorities": [
+                {
+                    "id": 1,
+                    "title": "Recuperar Energia e Vitalidade",
+                    "icon": "⚡",
+                    "description": "Eliminar fadiga crônica, aumentar disposição para atividades físicas e melhorar performance no dia a dia",
+                    "products": [
+                        "OZON POWER",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "mainProduct": "OZON POWER",
+                    "urgency": "alta",
+                    "benefitsText": "Aumenta energia, melhora performance física, combate o cansaço e otimiza o metabolismo",
+                    "key": "energia_vitalidade",
+                    "score": 32,
+                    "order": 1
+                },
+                {
+                    "id": 7,
+                    "title": "Emagrecimento e Aceleração do Metabolismo",
+                    "icon": "🔥",
+                    "description": "Queimar gordura localizada, acelerar metabolismo e controlar apetite naturalmente",
+                    "products": [
+                        "BORY SLIM",
+                        "OZON LEV",
+                        "MIND CHAI GEL REDUTOR OZONIZADO"
+                    ],
+                    "mainProduct": "BORY SLIM",
+                    "urgency": "média",
+                    "benefitsText": "Acelera metabolismo, queima gordura, reduz medidas e auxilia na drenagem linfática",
+                    "key": "emagrecimento_metabolismo",
+                    "score": 28,
+                    "order": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Melhorar Sono e Regeneração Celular",
+                    "icon": "😴",
+                    "description": "Conquistar sono profundo reparador, regular ritmo circadiano e potencializar regeneração noturna",
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "mainProduct": "DREAM BLISS",
+                    "urgency": "média",
+                    "benefitsText": "Regula o sono, melhora a qualidade do descanso, acelera recuperação celular e relaxa a mente",
+                    "key": "sono_regeneracao",
+                    "score": 24,
+                    "order": 3
+                }
+            ],
+            "answers": [
+                {
+                    "questionId": 1,
+                    "category": "energia",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 2,
+                    "category": "imunidade",
+                    "weight": 4,
+                    "selectedValue": 4,
+                    "selectedWeight": 3,
+                    "products": [
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 3,
+                    "category": "digestao",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 4,
+                    "category": "sono",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "TRIMAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 5,
+                    "category": "muscular",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LIFE CHI",
+                        "OZON FLEX",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 6,
+                    "category": "mental",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "ÔMEGA 3",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS",
+                        "NANO BLEND"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 7,
+                    "category": "intestinal",
+                    "weight": 4,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON LEV",
+                        "NX CAP",
+                        "BORY SLIM",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 4
+                },
+                {
+                    "questionId": 8,
+                    "category": "emocional",
+                    "weight": 3,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "DREAM BLISS",
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS"
+                    ],
+                    "questionWeight": 3
+                },
+                {
+                    "questionId": 9,
+                    "category": "beleza",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "LUMINOUS VITA",
+                        "ÓLEO OZONIZADO",
+                        "ÔMEGA 3",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 10,
+                    "category": "dores",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "POWER TRI-MAGNÉSIO",
+                        "LIFE CHI",
+                        "ÔMEGA 3",
+                        "DREAM BLISS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 11,
+                    "category": "sexual",
+                    "weight": 2,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "XBOOSTER",
+                        "LIFE CHI",
+                        "VIRTUOSOS CAPS",
+                        "VITA OZON PLUS"
+                    ],
+                    "questionWeight": 2
+                },
+                {
+                    "questionId": 12,
+                    "category": "exercicio",
+                    "weight": 1,
+                    "selectedValue": 5,
+                    "selectedWeight": 4,
+                    "products": [
+                        "OZON FLEX",
+                        "LIFE CHI",
+                        "POWER TRI-MAGNÉSIO"
+                    ],
+                    "questionWeight": 1
+                }
+            ],
+            "timestamp": "2025-06-25T20:12:22+02:00",
+            "id": "diag_685c3c06ad2cc8.55885259"
         }
     ]
 }

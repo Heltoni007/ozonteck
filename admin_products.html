@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Produtos e Categorias - Ozonteck</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center;margin:32px 0 18px 0;">
+            <div style="font-size:1.35rem;font-weight:700;color:#00b894;letter-spacing:1px;">Administração de Produtos, Categorias e Prioridades</div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:10px;margin-bottom:24px;align-items:center;">
+            <button class="btn" id="backToSystemBtn">← Voltar ao Sistema</button>
+            <button class="btn btn-secondary" id="logoutBtn" style="display:none;">Sair</button>
+        </div>
+        <div id="adminProductsApp" class="section-card">
+            <h2 style="text-align:center;color:#1e293b;font-weight:700;">⚙️ Gerenciamento de Produtos e Categorias</h2>
+            <div id="adminProductsContent">
+                <!-- Conteúdo dinâmico será inserido via JS -->
+            </div>
+        </div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/admin_products.js"></script>
+</body>
+</html> 

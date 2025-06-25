@@ -35,6 +35,7 @@ async function handleLogin() {
             appState.currentUser = data.user;
             appState.isLoggedIn = true;
             sessionStorage.setItem('ozonteckUserSession', JSON.stringify(data.user));
+            localStorage.setItem('ozonUser', JSON.stringify(data.user));
             
             showNotification(data.message, 'success');
             
@@ -48,6 +49,7 @@ async function handleLogin() {
             resetSessionTimeout();
             document.addEventListener('click', resetSessionTimeout);
             document.addEventListener('keypress', resetSessionTimeout);
+            if (typeof renderActionButtons === 'function') renderActionButtons();
         }
     } catch (error) {
         console.error("Falha ao fazer login:", error);
@@ -60,6 +62,7 @@ async function handleLogin() {
 
 function handleLogout(notificationMessage = 'Logout realizado com sucesso!') {
     sessionStorage.removeItem('ozonteckUserSession');
+    localStorage.removeItem('ozonUser');
     appState.currentUser = null;
     appState.isLoggedIn = false;
     appState.currentQuestion = 0;
@@ -75,6 +78,7 @@ function handleLogout(notificationMessage = 'Logout realizado com sucesso!') {
     clearTimeout(sessionTimeout);
     document.removeEventListener('click', resetSessionTimeout);
     document.removeEventListener('keypress', resetSessionTimeout);
+    if (typeof renderActionButtons === 'function') renderActionButtons();
 }
 
 async function addUser() {
@@ -106,17 +110,55 @@ async function addUser() {
     }
 }
 
+async function editUser(username, user) {
+    // Cria um formulário inline para editar nome, avatar e role
+    const teamList = document.getElementById('teamList');
+    const userCard = Array.from(teamList.children).find(card => card.dataset.username === username);
+    if (!userCard) return;
+    userCard.innerHTML = `
+        <form id="editUserForm" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <input type="text" id="editName" value="${user.name}" placeholder="Nome" style="width:120px;">
+            <input type="text" id="editAvatar" value="${user.avatar || ''}" placeholder="Avatar" style="width:50px;">
+            <select id="editRole">
+                <option value="admin" ${user.role==='admin'?'selected':''}>admin</option>
+                <option value="vendedor" ${user.role==='vendedor'?'selected':''}>vendedor</option>
+                <option value="demo" ${user.role==='demo'?'selected':''}>demo</option>
+            </select>
+            <button type="submit" class="btn btn-sm" style="background:#00b894;">Salvar</button>
+            <button type="button" class="btn btn-sm btn-danger" id="cancelEdit">Cancelar</button>
+        </form>
+    `;
+    document.getElementById('cancelEdit').onclick = updateTeamList;
+    document.getElementById('editUserForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const name = document.getElementById('editName').value.trim();
+        const avatar = document.getElementById('editAvatar').value.trim();
+        const role = document.getElementById('editRole').value;
+        try {
+            const response = await fetch('backend/api/update_user.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, name, avatar, role })
+            });
+            const result = await response.json();
+            showNotification(result.message, result.error ? 'error' : 'success');
+            if (!result.error) updateTeamList();
+        } catch (error) {
+            showNotification('Erro ao atualizar usuário.', 'error');
+        }
+    };
+}
+
 async function updateTeamList() {
     try {
         const response = await fetch('backend/api/get_users.php');
         const users = await response.json();
-        
         const teamList = document.getElementById('teamList');
         teamList.innerHTML = '';
-        
         Object.entries(users).forEach(([username, user]) => {
             const userCard = document.createElement('div');
             userCard.className = 'user-card';
+            userCard.dataset.username = username;
             userCard.innerHTML = `
                 <div>
                     <span>${user.avatar}</span>
@@ -124,6 +166,7 @@ async function updateTeamList() {
                     <span style="font-size: 12px; background: #e2e8f0; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">${user.role}</span>
                 </div>
                 ${user.role !== 'admin' ? `<button class="btn btn-danger btn-sm" onclick="removeUser('${username}')">Remover</button>` : ''}
+                <button class="btn btn-sm" style="background:#00b894;" onclick="editUser('${username}', ${JSON.stringify(user).replace(/"/g,'&quot;')})">Editar</button>
             `;
             teamList.appendChild(userCard);
         });
@@ -165,17 +208,18 @@ function checkActiveSession() {
 
         showNotification(`Sessão restaurada. Bem-vindo(a) de volta, ${user.name}!`, 'success');
 
-        hideAllSections();
-        if (user.role === 'admin') {
-            document.getElementById('adminPanel').style.display = 'block';
-            updateTeamList();
+        if (typeof hideAllSections === 'function') hideAllSections();
+        const adminPanel = document.getElementById('adminPanel');
+        if (user.role === 'admin' && adminPanel) {
+            adminPanel.style.display = 'block';
+            if (typeof updateTeamList === 'function') updateTeamList();
         }
-        
-        // Para admin e vendedores, após logar, sempre mostramos a coleta de dados do cliente.
-        document.getElementById('clientDataSection').classList.remove('hidden');
+        const clientDataSection = document.getElementById('clientDataSection');
+        if (clientDataSection) clientDataSection.classList.remove('hidden');
 
-        resetSessionTimeout();
+        if (typeof resetSessionTimeout === 'function') resetSessionTimeout();
         document.addEventListener('click', resetSessionTimeout);
         document.addEventListener('keypress', resetSessionTimeout);
+        if (typeof renderActionButtons === 'function') renderActionButtons();
     }
 } 

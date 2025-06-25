@@ -17,10 +17,16 @@ function showNotification(message, type = 'success') {
 }
 
 function hideAllSections() {
-    document.getElementById('loginSection').classList.add('hidden');
-    document.getElementById('adminPanel').style.display = 'none';
-    document.getElementById('clientDataSection').classList.add('hidden');
-    document.getElementById('ozonioHistory').classList.add('hidden');
-    document.getElementById('quizSection').classList.add('hidden');
-    document.getElementById('resultsSection').classList.add('hidden');
+    const loginSection = document.getElementById('loginSection');
+    if (loginSection) loginSection.classList.add('hidden');
+    const adminPanel = document.getElementById('adminPanel');
+    if (adminPanel) adminPanel.style.display = 'none';
+    const clientDataSection = document.getElementById('clientDataSection');
+    if (clientDataSection) clientDataSection.classList.add('hidden');
+    const ozonioHistory = document.getElementById('ozonioHistory');
+    if (ozonioHistory) ozonioHistory.classList.add('hidden');
+    const quizSection = document.getElementById('quizSection');
+    if (quizSection) quizSection.classList.add('hidden');
+    const resultsSection = document.getElementById('resultsSection');
+    if (resultsSection) resultsSection.classList.add('hidden');
 } 

@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Ozonteck - Diagnóstico Personalizado V5.1</title>
+    <title>Sistema Ozonteck - Diagnóstico Personalizado V5.0</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="header" id="mainHeader" style="text-align:center;">
             <div class="logo">🌿 OZONTECK</div>
             <div class="subtitle">Sistema Inteligente de Diagnóstico e Recomendação V5.0</div>
             <div class="company-info">A maior fábrica de produtos ozonizados da América Latina</div>
         </div>
+        <div id="actionButtons" style="display:flex;justify-content:center;gap:10px;margin-bottom:24px;align-items:center;"></div>
 
         <!-- Seção de Login -->
         <div id="loginSection" class="section-card">
+            <div style="text-align:center;margin-bottom:18px;">
+                <img src="images/logo_smartozen.png" alt="Logo Smartozon" style="max-width:180px;width:60vw;display:block;margin:0 auto 10px auto;filter:drop-shadow(0 0 18px #00d4aa88);">
+            </div>
             <h2 style="text-align: center; margin-bottom: 25px; color: #1e293b; font-weight: 700;">🔐 Acesso ao Sistema</h2>
             
             <div class="form-group">
@@ -66,6 +70,10 @@
             <div class="form-group">
                 <label for="clientEmail">E-mail:</label>
                 <input type="email" id="clientEmail" placeholder="exemplo@email.com">
+            </div>
+            <div class="form-group">
+                <label for="clientWhatsapp">WhatsApp:</label>
+                <input type="text" id="clientWhatsapp" placeholder="(99) 99999-9999" maxlength="15">
             </div>
 
             <div class="form-group">
@@ -138,5 +146,15 @@
     <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Esconde o cabeçalho se estiver na tela de login
+        const header = document.getElementById('mainHeader');
+        const loginSection = document.getElementById('loginSection');
+        if (header && loginSection && !loginSection.classList.contains('hidden')) {
+            header.style.display = 'none';
+        }
+    });
+    </script>
 </body>
 </html> 

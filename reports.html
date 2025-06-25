@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Ozonteck</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center;margin:32px 0 18px 0;">
+            <div style="font-size:1.35rem;font-weight:700;color:#00b894;letter-spacing:1px;">Relatórios de Diagnóstico e Vendas</div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:10px;margin-bottom:24px;align-items:center;">
+            <button id="btnBackToSystem" class="btn btn-sm">⬅ Voltar</button>
+            <select id="exportSelect" class="btn btn-sm" style="width:auto;min-width:160px;">
+                <option value="">Exportar como...</option>
+                <option value="csv">CSV</option>
+                <option value="pdf">PDF</option>
+                <option value="txt">TXT</option>
+            </select>
+        </div>
+        <div id="diagnosticsReport"></div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Proteção: só permite acesso se estiver logado
+            var userSession = sessionStorage.getItem('ozonteckUserSession');
+            if (!userSession) {
+                window.location.href = 'index.html';
+                return;
+            }
+            if (typeof renderDiagnosticsReport === 'function') renderDiagnosticsReport();
+            document.getElementById('btnBackToSystem').onclick = function() {
+                window.location.href = 'index.html';
+            };
+            document.getElementById('exportSelect').onchange = function(e) {
+                if (e.target.value === 'csv') exportDiagnosticsCSV();
+                if (e.target.value === 'pdf') exportDiagnosticsPDF();
+                if (e.target.value === 'txt') exportDiagnosticsTXT();
+                e.target.value = '';
+            };
+            document.getElementById('btnLogout').onclick = function() {
+                if (typeof handleLogout === 'function') handleLogout();
+            };
+        });
+    </script>
+</body>
+</html> 
