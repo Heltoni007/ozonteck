@@ -441,8 +441,11 @@ const GRAVITY_THRESHOLDS = {
 };
 
 function generateDiagnosticResult() {
+    // 1. Inicialização das pontuações
     const priorityScores = {};
     Object.keys(clientPriorities).forEach(key => priorityScores[key] = 0);
+
+    // 2. Processamento das respostas
     appState.answers.forEach(answer => {
         const priorityKey = categoryToPriorityKey[answer.category];
         if (priorityKey) {
@@ -450,10 +453,14 @@ function generateDiagnosticResult() {
             priorityScores[priorityKey] += score;
         }
     });
+
+    // 3. Ordenação das prioridades
     const sortedPriorities = Object.entries(priorityScores)
         .sort((a, b) => b[1] - a[1])
         .map(([key, score]) => ({ key, score, ...clientPriorities[key] }));
     const top3 = sortedPriorities.slice(0, 3);
+
+    // 4. Qualificação da gravidade e recomendação dinâmica
     const result = top3.map(priority => {
         let gravity = 'Saudável';
         let recommendation = [];
@@ -492,6 +499,8 @@ function generateDiagnosticResult() {
             benefitsText: priority.benefitsText
         };
     });
+
+    // 5. Mensagem de resumo
     let summary = '';
     const main = result[0];
     if (main.gravity === 'Crítica') {
@@ -503,7 +512,8 @@ function generateDiagnosticResult() {
     } else {
         summary = `🎉 Parabéns! Você está saudável em sua principal prioridade (${main.name}). Continue cuidando bem da sua saúde!`;
     }
-    return { priorities: result, summary };
+
+    return { priorities: result, summary, debug: { priorityScores, answers: appState.answers } };
 }
 
 function generateResults() {
@@ -525,12 +535,14 @@ function displayDiagnosticResults(diagnostic) {
                     <li style="margin-bottom: 12px;">
                         <strong>${i+1}º ${p.icon} ${p.name}</strong> <span style="color:#64748b; font-size:13px;">(${p.gravity}, Pontuação: ${p.score})</span><br>
                         <span style="color:#64748b; font-size:14px;">${p.benefitsText}</span><br>
-                        ${p.recommendation.length > 0 ? `<b>Recomendação:</b> <span style="color:#00b894;">${p.recType}</span> - ${p.recommendation.map(prod => productDatabase[prod]?.name || prod).join(', ')}` : '<i>Nenhum produto recomendado</i>'}
+                        ${p.recommendation.length > 0 ? `<b>Recomendação:</b> <span style=\"color:#00b894;\">${p.recType}</span> - ${p.recommendation.map(prod => productDatabase[prod]?.name || prod).join(', ')}` : '<i>Nenhum produto recomendado</i>'}
                     </li>
                 `).join('')}
             </ul>
         </div>
     </div>`;
+    // Bloco de debug visual temporário
+    html += `<pre style='background:#f8fafc;color:#334155;padding:12px;border-radius:8px;margin-top:24px;font-size:13px;'>DEBUG: ${JSON.stringify(diagnostic, null, 2)}</pre>`;
     container.innerHTML = html;
 }
 
